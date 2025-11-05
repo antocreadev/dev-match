@@ -23,7 +23,9 @@
       "Docker"
     ],
     "biggest_achievement": "Co-founder of Mindlet 🐙",
-    "fun_fact": "Who runs, falls!"
+    "fun_fact": "Who runs, falls!",
+    "future_plans": "Continue expanding Mindlet to become the leading collaborative learning platform globally. Planning to deepen expertise in AI/ML and explore cutting-edge technologies in neural networks and natural language processing. Aspiring to speak at international tech conferences and mentor the next generation of developers.",
+    "detailed_bio": "I am a passionate Full-stack developer with a Master's degree in Full Stack Web and Mobile Development from Università di Corsica. My expertise spans both front-end and back-end development, allowing me to design complete, high-performance applications tailored to modern market needs. I master numerous front-end libraries including React, Next.js, Solid.js, and Astro, while excelling in back-end development with Node.js, Python, and PHP ecosystems. My proficiency in TypeScript, HTML5, CSS3, Python, PHP, JavaScript, Bash, and SQL enables me to tackle diverse challenges from image processing to complex algorithms and data structures. With DevOps knowledge in Git and Docker, combined with strong project management skills, I've successfully delivered international-scale projects like GOLIAT, where I developed a sophisticated interface with user management for a drone-based hot spot geolocation tool. As co-founder of Mindlet, the first social network dedicated to collaborative learning, I'm combining proven pedagogical methods with AI to revolutionize how people learn and share knowledge. Always eager to learn and stay at the forefront of web and mobile technologies."
   },
   {
     "id": "medjourney",
@@ -46,7 +48,9 @@
       "Python"
     ],
     "biggest_achievement": "Co-founder of Mindlet 🐙",
-    "fun_fact": "When it works, don't touch it!"
+    "fun_fact": "When it works, don't touch it!",
+    "future_plans": "Scale Mindlet to millions of users worldwide while perfecting mobile-first experiences. Aiming to become a leading expert in cross-platform development and exploring innovative ways to bridge web and native mobile applications. Planning to contribute more to open-source projects and build a strong developer community.",
+    "detailed_bio": "As a skilled Full-stack developer and co-founder of Mindlet, I specialize in creating seamless user experiences across web and mobile platforms. My journey in tech has been driven by a passion for TypeScript and modern JavaScript frameworks, particularly React and React Native, which I use to build scalable, maintainable applications. With extensive experience in PHP and Laravel, I've architected robust REST APIs that power complex applications. My expertise in PostgreSQL ensures efficient data management and optimization. I believe in the philosophy 'when it works, don't touch it' – a testament to writing clean, reliable code from the start. At Mindlet, I've been instrumental in developing the mobile application using React Native with Expo, ensuring a smooth learning experience for our users. My proficiency in API design has enabled seamless integration between our various services, from the Laravel backend to our AI-powered features. While Python isn't my strongest suit, I'm always eager to expand my skill set and collaborate with experts in areas where I can grow."
   },
 
   {
@@ -70,7 +74,9 @@
       "Advanced CSS styling"
     ],
     "biggest_achievement": "Developed a voice recognition system with 98% accuracy.",
-    "fun_fact": "Sports enthusiast and music lover."
+    "fun_fact": "Sports enthusiast and music lover.",
+    "future_plans": "Advance my expertise in artificial intelligence and machine learning, focusing on real-world applications like voice recognition and natural language processing. Planning to publish research papers on AI model optimization and contribute to open-source AI libraries. Aspiring to lead AI projects that bridge the gap between research and production-ready systems.",
+    "detailed_bio": "As a Full Stack Developer with a strong passion for Artificial Intelligence, I have dedicated my career to building intelligent systems that solve real-world problems. My journey in software development began with web applications, where I mastered Python, FastAPI, and PostgreSQL to create high-performance backend services. However, my true calling emerged when I discovered the potential of AI to transform how we interact with technology. My biggest achievement – developing a voice recognition system with 98% accuracy – showcases my ability to combine theoretical knowledge with practical implementation. This project required deep understanding of signal processing, neural networks, and optimization techniques, all while ensuring the system remained efficient and scalable. I excel in software architecture, designing systems that can handle complex AI workflows while maintaining code quality and performance. My expertise in FastAPI allows me to build robust REST APIs that serve AI models to millions of users. PostgreSQL proficiency ensures efficient data storage and retrieval for training datasets and user information. While frontend design isn't my strongest suit, I focus on what I do best: building the intelligent backend systems that power modern applications. When I'm not coding, you'll find me playing sports or enjoying music – activities that help me maintain the creative energy needed for solving complex technical challenges. I believe AI is the future, and I'm committed to being at the forefront of this technological revolution."
   },
   {
     "id": "nicolas-robles",
@@ -93,7 +99,9 @@
       "TypeScript"
     ],
     "biggest_achievement": "Created a mobile app called HealthyCore, focused on fitness and nutrition.",
-    "fun_fact": "Practices scuba diving and has earned several diving certifications."
+    "fun_fact": "Practices scuba diving and has earned several diving certifications.",
+    "future_plans": "Master container orchestration and cloud-native architectures to become a DevOps expert. Planning to contribute to major open-source projects in the Kubernetes ecosystem and write technical articles about containerization best practices. Aiming to expand HealthyCore into a comprehensive wellness platform with AI-powered personalized recommendations.",
+    "detailed_bio": "At just 20 years old, I've already made significant strides in the world of web development and DevOps. My journey began with React and Node.js, where I discovered the power of JavaScript for building dynamic, responsive applications. This foundation led me to create HealthyCore, a mobile app that combines my passion for fitness with my technical skills to help users track nutrition and exercise. What sets me apart is my expertise in containerization and orchestration. I've mastered Kubernetes and Docker, technologies that are revolutionizing how we deploy and scale applications. My experience with these tools has given me a unique perspective on software architecture – I don't just build applications, I build systems that can grow and adapt to changing demands. My backend skills in Node.js and PHP, combined with Flask for Python projects, allow me to work across multiple technology stacks. I'm particularly proud of my ability to design microservices architectures that are both maintainable and scalable. While CSS and TypeScript present challenges for me, I focus on mastering the technologies that matter most for backend and infrastructure work. Outside of coding, I'm an avid scuba diver with several certifications. Just like exploring the underwater world requires careful planning and attention to detail, so does building robust software systems. This mindset has served me well in my career, helping me approach problems methodically and always considering the bigger picture. I'm excited about the future of cloud computing and container technologies, and I'm committed to staying at the cutting edge of DevOps practices."
   },
   {
     "id": "achille-poirier",
@@ -114,6 +122,8 @@
       "Presentation skills"
     ],
     "biggest_achievement": "Wrote the necessary code for running the webcomic at janov.eu/comic.",
-    "fun_fact": "Really enjoys looking at pictures of Pallas' cats."
+    "fun_fact": "Really enjoys looking at pictures of Pallas' cats.",
+    "future_plans": "Deepen my expertise in DevOps automation and infrastructure as code, focusing on building highly reliable CI/CD pipelines. Planning to work on large-scale distributed systems and contribute to the Kubernetes community. Aspiring to improve my presentation skills to share my technical knowledge at meetups and conferences.",
+    "detailed_bio": "As a backend-focused developer with strong DevOps skills, I specialize in building the invisible infrastructure that keeps modern applications running smoothly. My expertise lies in CI/CD pipelines and Kubernetes orchestration – the technologies that enable teams to deploy code rapidly and reliably. My biggest achievement, developing the backend infrastructure for the webcomic at janov.eu/comic, showcases my ability to create systems that handle real-world traffic while maintaining performance and reliability. This project required careful consideration of database design, caching strategies, and deployment automation. I believe that great backend development is about making the complex simple. Whether it's setting up automated testing pipelines, configuring container orchestration, or optimizing database queries, I approach each problem with a focus on maintainability and scalability. My proficiency in CI/CD tools has enabled me to reduce deployment times from hours to minutes, allowing teams to iterate faster and with more confidence. Kubernetes has become my specialty – I understand not just how to use it, but why it works the way it does, which helps me design better architectures. I'll be honest about my weaknesses: CSS styling and UI/UX design aren't my forte, and I'm working on improving my presentation skills. But I believe in focusing on what I do best while collaborating with talented designers and frontend developers. When I'm not coding, you'll find me browsing pictures of Pallas' cats – their expressive faces and fluffy appearance never fail to brighten my day. This quirky interest reminds me that even in the serious world of backend development, there's always room for joy and personality. I'm committed to continuous learning and becoming a true expert in DevOps and infrastructure automation."
   }
 ]

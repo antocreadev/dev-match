@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import { mockProfiles } from "@/lib/mock-data"
-import Link from "next/link"
-import { ChevronLeft, Heart, MessageCircle, Share2, Flag } from "lucide-react"
-import { useState } from "react"
+import { mockProfiles } from "@/lib/mock-data";
+import Link from "next/link";
+import { ChevronLeft, Heart, MessageCircle, Share2, Flag } from "lucide-react";
+import { useState } from "react";
 
 export default function ProfilePage({ params }: { params: { id: string } }) {
-  const profile = mockProfiles.find((p) => p.id === params.id)
-  const [isLiked, setIsLiked] = useState(false)
+  const profile = mockProfiles.find((p) => p.id === params.id);
+  const [isLiked, setIsLiked] = useState(false);
 
   if (!profile) {
     return (
@@ -19,7 +19,7 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
           </Link>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -27,14 +27,19 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-border">
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/browse" className="flex items-center gap-2 hover:opacity-70 transition">
+          <Link
+            href="/browse"
+            className="flex items-center gap-2 hover:opacity-70 transition"
+          >
             <ChevronLeft className="w-6 h-6" />
             <span className="font-semibold">Back</span>
           </Link>
 
           <h1 className="text-xl font-bold">{profile.name}</h1>
 
-          <button className="text-muted-foreground hover:text-foreground transition">⋯</button>
+          <button className="text-muted-foreground hover:text-foreground transition">
+            ⋯
+          </button>
         </div>
       </header>
 
@@ -42,7 +47,11 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
         <div className="max-w-2xl mx-auto px-4">
           {/* Hero Image */}
           <div className="relative h-96 rounded-3xl overflow-hidden mb-8 border border-border shadow-lg">
-            <img src={profile.image || "/placeholder.svg"} alt={profile.name} className="w-full h-full object-cover" />
+            <img
+              src={profile.image || "/placeholder.svg"}
+              alt={profile.name}
+              className="w-full h-full object-cover"
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
 
             {/* Profile name overlay */}
@@ -59,29 +68,41 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
           {/* Stats */}
           <div className="grid grid-cols-3 gap-4 mb-8">
             <div className="bg-card rounded-2xl p-4 border border-border text-center">
-              <div className="text-2xl font-bold text-primary">{profile.followers?.toLocaleString()}</div>
+              <div className="text-2xl font-bold text-primary">
+                {profile.followers?.toLocaleString()}
+              </div>
               <div className="text-sm text-muted-foreground">Followers</div>
             </div>
             <div className="bg-card rounded-2xl p-4 border border-border text-center">
-              <div className="text-2xl font-bold text-accent">{profile.rating?.toFixed(1)}</div>
+              <div className="text-2xl font-bold text-accent">
+                {profile.rating?.toFixed(1)}
+              </div>
               <div className="text-sm text-muted-foreground">Rating</div>
             </div>
             <div className="bg-card rounded-2xl p-4 border border-border text-center">
-              <div className="text-2xl font-bold text-secondary">{profile.verified ? "✓" : "○"}</div>
-              <div className="text-sm text-muted-foreground">{profile.verified ? "Verified" : "Not Verified"}</div>
+              <div className="text-2xl font-bold text-secondary">
+                {profile.verified ? "✓" : "○"}
+              </div>
+              <div className="text-sm text-muted-foreground">
+                {profile.verified ? "Verified" : "Not Verified"}
+              </div>
             </div>
           </div>
 
           {/* Achievement */}
           <div className="bg-card rounded-2xl p-6 border border-border mb-8">
             <h3 className="text-lg font-bold mb-3">🏆 Biggest Achievement</h3>
-            <p className="text-foreground leading-relaxed">{profile.biggest_achievement}</p>
+            <p className="text-foreground leading-relaxed">
+              {profile.biggest_achievement}
+            </p>
           </div>
 
           {/* Fun Fact */}
           <div className="bg-card rounded-2xl p-6 border border-border mb-8">
             <h3 className="text-lg font-bold mb-3">💡 Fun Fact</h3>
-            <p className="text-foreground leading-relaxed italic">{profile.fun_fact}</p>
+            <p className="text-foreground leading-relaxed italic">
+              {profile.fun_fact}
+            </p>
           </div>
 
           {/* Coding Strengths */}
@@ -127,7 +148,10 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
               onClick={() => setIsLiked(!isLiked)}
               className="flex-1 flex items-center justify-center gap-2 bg-primary text-primary-foreground py-3 rounded-full hover:shadow-lg transition font-medium"
             >
-              <Heart className="w-5 h-5" fill={isLiked ? "currentColor" : "none"} />
+              <Heart
+                className="w-5 h-5"
+                fill={isLiked ? "currentColor" : "none"}
+              />
               {isLiked ? "Liked" : "Like"}
             </button>
 
@@ -144,5 +168,5 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
         </div>
       </div>
     </main>
-  )
+  );
 }

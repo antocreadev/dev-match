@@ -19,7 +19,9 @@ export default function Browse() {
       const interestMatch =
         selectedInterests.length === 0 ||
         selectedInterests.some((interest) =>
-          profile.coding_strengths.some(strength => strength.toLowerCase().includes(interest.toLowerCase()))
+          profile.coding_strengths.some((strength) =>
+            strength.toLowerCase().includes(interest.toLowerCase())
+          )
         );
       return ageMatch && interestMatch;
     });
