@@ -130,13 +130,13 @@ export default function Featured() {
             <div className="space-y-6 animate-fade-in-up">
               {/* Header */}
               <div className="space-y-3">
-                <h1 className="text-6xl font-bold text-foreground">
+                <h1 className="text-5xl lg:text-6xl font-bold text-foreground leading-tight">
                   {anthony.name}
                 </h1>
-                <p className="text-2xl text-primary font-semibold">
+                <p className="text-xl lg:text-2xl text-primary font-semibold">
                   {anthony.title}
                 </p>
-                <p className="text-lg text-muted-foreground flex items-center gap-2">
+                <p className="text-base lg:text-lg text-muted-foreground flex flex-wrap items-center gap-2">
                   <span>📍 {anthony.location}</span>
                   <span>•</span>
                   <span>{anthony.nationality}</span>
@@ -146,36 +146,38 @@ export default function Featured() {
               </div>
 
               {/* Tagline */}
-              <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl p-6 border border-primary/20">
-                <p className="text-xl font-medium text-foreground italic">
+              <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl p-5 border border-primary/20">
+                <p className="text-lg lg:text-xl font-medium text-foreground italic">
                   "{anthony.tagline}"
                 </p>
               </div>
 
               {/* Bio */}
-              <div className="bg-card rounded-2xl p-6 border border-border shadow-sm">
-                <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center gap-2">
+              <div className="bg-card rounded-2xl p-5 border border-border shadow-sm">
+                <h2 className="text-xl lg:text-2xl font-bold text-foreground mb-3 flex items-center gap-2">
                   <span>👨‍💻</span> About Me
                 </h2>
-                <p className="text-foreground leading-relaxed">{anthony.bio}</p>
+                <p className="text-foreground leading-relaxed text-sm lg:text-base">
+                  {anthony.bio}
+                </p>
               </div>
 
               {/* Education */}
-              <div className="bg-card rounded-2xl p-6 border border-border shadow-sm">
-                <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center gap-2">
+              <div className="bg-card rounded-2xl p-5 border border-border shadow-sm">
+                <h2 className="text-xl lg:text-2xl font-bold text-foreground mb-3 flex items-center gap-2">
                   <span>🎓</span> Education
                 </h2>
-                <div className="space-y-2">
-                  <h3 className="text-xl font-semibold text-primary">
+                <div className="space-y-1.5">
+                  <h3 className="text-lg lg:text-xl font-semibold text-primary">
                     {anthony.education.degree}
                   </h3>
-                  <p className="text-lg text-foreground">
+                  <p className="text-base lg:text-lg text-foreground">
                     {anthony.education.field}
                   </p>
-                  <p className="text-muted-foreground">
+                  <p className="text-muted-foreground text-sm lg:text-base">
                     {anthony.education.school}
                   </p>
-                  <p className="text-sm text-muted-foreground font-mono">
+                  <p className="text-xs lg:text-sm text-muted-foreground font-mono">
                     {anthony.education.period}
                   </p>
                 </div>
