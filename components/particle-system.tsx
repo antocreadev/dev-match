@@ -34,23 +34,23 @@ export function ParticleSystem({
     console.log("🎉 ParticleSystem mounted:", type, "at position:", x, y);
     // Créer les particules initiales
     const newParticles: Particle[] = [];
-    const particleCount = 20;
+    const particleCount = 30; // Plus de particules pour un effet plus spectaculaire
     const emoji = type === "heart" ? "❤️" : "✖️";
 
     for (let i = 0; i < particleCount; i++) {
       const angle =
         (Math.PI * 2 * i) / particleCount + (Math.random() - 0.5) * 0.8;
-      const speed = 4 + Math.random() * 6;
+      const speed = 6 + Math.random() * 8; // Vitesse augmentée
 
       newParticles.push({
         id: Date.now() + i,
         x: x,
         y: y,
         vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed - 3, // Plus de biais vers le haut
+        vy: Math.sin(angle) * speed - 4, // Plus de biais vers le haut
         rotation: Math.random() * 360,
-        rotationSpeed: (Math.random() - 0.5) * 25,
-        scale: 0.8 + Math.random() * 0.7,
+        rotationSpeed: (Math.random() - 0.5) * 30,
+        scale: 1.5 + Math.random() * 1.5, // Taille beaucoup plus grande
         opacity: 1,
         emoji: emoji,
       });
@@ -101,12 +101,12 @@ export function ParticleSystem({
             top: `${particle.y}px`,
             transform: `translate(-50%, -50%) rotate(${particle.rotation}deg) scale(${particle.scale})`,
             opacity: particle.opacity,
-            fontSize: "3rem",
-            textShadow: "0 4px 12px rgba(0,0,0,0.3)",
+            fontSize: "5rem", // Beaucoup plus grand !
+            textShadow: "0 6px 20px rgba(0,0,0,0.4)",
             filter:
               type === "heart"
-                ? "drop-shadow(0 0 8px rgba(255,50,50,0.6))"
-                : "none",
+                ? "drop-shadow(0 0 15px rgba(255,50,50,0.8)) drop-shadow(0 0 25px rgba(255,100,100,0.5))"
+                : "drop-shadow(0 0 15px rgba(255,50,50,0.8))",
           }}
         >
           {particle.emoji}

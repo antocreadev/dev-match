@@ -1,0 +1,119 @@
+[
+  {
+    "id": "antocreadev",
+    "name": "Anthony Pierre Philippe Menghi",
+    "age": 22,
+    "date_of_birth": "2003-04-04",
+    "place_of_birth": "Nice, France",
+    "nationality": "🇫🇷",
+    "image": "anthony.png",
+    "coding_strengths": [
+      "Python",
+      "AI",
+      "Machine Learning",
+      "FastAPI",
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "Next.js"
+    ],
+    "coding_weaknesses": [
+      "DevOps",
+      "Kubernetes",
+      "Docker"
+    ],
+    "biggest_achievement": "Co-founder of Mindlet 🐙",
+    "fun_fact": "Who runs, falls!"
+  },
+  {
+    "id": "medjourney",
+    "name": "Mehdi Ghoulam",
+    "age": 23,
+    "date_of_birth": "2002-09-07",
+    "place_of_birth": "Mulhouse, France",
+    "nationality": "🇫🇷",
+    "image": "mehdi.png",
+    "coding_strengths": [
+      "TypeScript",
+      "React",
+      "React Native",
+      "PHP",
+      "Laravel",
+      "API",
+      "PostgreSQL"
+    ],
+    "coding_weaknesses": [
+      "Python"
+    ],
+    "biggest_achievement": "Co-founder of Mindlet 🐙",
+    "fun_fact": "When it works, don't touch it!"
+  },
+
+  {
+    "id": "dahdouh-ahmed",
+    "name": "Ahmed Dahdouh",
+    "age": 27,
+    "date_of_birth": "1998-03-16",
+    "place_of_birth": "Algiers, Algeria",
+    "nationality": "🇩🇿",
+    "image": "ahmed.png",
+    "coding_strengths": [
+      "Full Stack Development",
+      "Artificial Intelligence",
+      "FastAPI",
+      "Python",
+      "PostgreSQL",
+      "Software Architecture"
+    ],
+    "coding_weaknesses": [
+      "Frontend design",
+      "Advanced CSS styling"
+    ],
+    "biggest_achievement": "Developed a voice recognition system with 98% accuracy.",
+    "fun_fact": "Sports enthusiast and music lover."
+  },
+  {
+    "id": "nicolas-robles",
+    "name": "Nicolas Robles",
+    "age": 20,
+    "date_of_birth": "2003-07-23",
+    "place_of_birth": "Libourne, France",
+    "nationality": "🇫🇷",
+    "image": "NR-pdp.png",
+    "coding_strengths": [
+      "React",
+      "Node.js",
+      "PHP",
+      "Kubernetes",
+      "Docker",
+      "Flask"
+    ],
+    "coding_weaknesses": [
+      "CSS",
+      "TypeScript"
+    ],
+    "biggest_achievement": "Created a mobile app called HealthyCore, focused on fitness and nutrition.",
+    "fun_fact": "Practices scuba diving and has earned several diving certifications."
+  },
+  {
+    "id": "achille-poirier",
+    "name": "Achille Poirier",
+    "age": 22,
+    "date_of_birth": "2003-06-01",
+    "place_of_birth": "France",
+    "nationality": "🇫🇷",
+    "image": "achille.png",
+    "coding_strengths": [
+      "Backend",
+      "CI/CD",
+      "Kubernetes"
+    ],
+    "coding_weaknesses": [
+      "CSS styling",
+      "UI/UX design",
+      "Presentation skills"
+    ],
+    "biggest_achievement": "Wrote the necessary code for running the webcomic at janov.eu/comic.",
+    "fun_fact": "Really enjoys looking at pictures of Pallas' cats."
+  }
+]

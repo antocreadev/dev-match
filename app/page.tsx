@@ -9,7 +9,6 @@ import Link from "next/link";
 export default function Home() {
   const [profiles, setProfiles] = useState<Profile[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isFinished, setIsFinished] = useState(false);
 
   useEffect(() => {
     setProfiles(mockProfiles);
@@ -17,31 +16,14 @@ export default function Home() {
   }, []);
 
   const handleSwipeLeft = () => {
-    setTimeout(() => {
-      if (currentIndex + 1 >= profiles.length) {
-        setIsFinished(true);
-      } else {
-        setCurrentIndex((prev) => prev + 1);
-      }
-    }, 300);
+    // Passer à la carte suivante (boucle infinie)
+    setCurrentIndex((prev) => (prev + 1) % profiles.length);
   };
 
   const handleSwipeRight = () => {
-    setTimeout(() => {
-      if (currentIndex + 1 >= profiles.length) {
-        setIsFinished(true);
-      } else {
-        setCurrentIndex((prev) => prev + 1);
-      }
-    }, 300);
+    // Passer à la carte suivante (boucle infinie)
+    setCurrentIndex((prev) => (prev + 1) % profiles.length);
   };
-
-  const handleReset = () => {
-    setCurrentIndex(0);
-    setIsFinished(false);
-  };
-
-  const currentProfile = profiles[currentIndex];
 
   if (profiles.length === 0) {
     return <div className="min-h-screen bg-background" />;
@@ -87,88 +69,124 @@ export default function Home() {
       </header>
 
       {/* Main Content */}
-      <div className="pt-20 pb-20 px-4 flex items-center justify-center min-h-screen">
-        <div className="w-full max-w-sm">
-          {isFinished ? (
-            <div className="text-center space-y-6 animate-scale-in-gently">
-              <div className="text-6xl animate-float-up">🎉</div>
-              <h2 className="text-3xl font-bold text-foreground">All Done!</h2>
-              <p className="text-muted-foreground font-light">
-                You've seen all {profiles.length} developers. Come back tomorrow
-                for more matches!
-              </p>
-              <button
-                onClick={handleReset}
-                className="px-6 py-3 bg-primary text-primary-foreground rounded-full font-medium hover:shadow-lg hover:scale-105 transition active:scale-95"
-              >
-                Start Over
-              </button>
-            </div>
-          ) : (
-            <>
-              {/* Cards Stack */}
-              <div className="relative h-[600px] mb-8">
-                {/* Background Stack Cards */}
-                {[2, 1].map((offset) => {
-                  const profileIndex = currentIndex + offset;
-                  const profile = profiles[profileIndex];
-                  if (!profile) return null;
+      <div className="pt-20 pb-20 px-4 flex items-center justify-center min-h-screen overflow-hidden">
+        <div className="w-full max-w-7xl">
+          {/* Cards Carousel - Afficher toutes les cartes horizontalement */}
+          <div className="relative h-[600px] mb-8 flex items-center justify-center">
+            {/* Générer toutes les positions visibles */}
+            {profiles.map((profile, idx) => {
+              // Calculer l'offset circulaire correctement
+              const totalCards = profiles.length;
+              let offset = idx - currentIndex;
 
-                  return (
-                    <div
-                      key={offset}
-                      className="absolute inset-0 rounded-3xl bg-card border border-border shadow-lg overflow-hidden animate-scale-in-gently"
-                      style={{
-                        transform: `translateY(${offset * 8}px) scale(${
-                          1 - offset * 0.02
-                        })`,
-                        zIndex: -offset,
-                      }}
-                    >
-                      <img
-                        src={profile.image || "/placeholder.svg"}
-                        alt={profile.name}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  );
-                })}
+              // Normaliser l'offset pour la distance la plus courte
+              while (offset > totalCards / 2) offset -= totalCards;
+              while (offset < -totalCards / 2) offset += totalCards;
 
-                {/* Current Card */}
-                {currentProfile && (
-                  <SwipeCard
-                    profile={currentProfile}
-                    onSwipeLeft={handleSwipeLeft}
-                    onSwipeRight={handleSwipeRight}
+              const maxVisible = 3;
+              const absOffset = Math.abs(offset);
+
+              // Ne pas afficher les cartes trop loin
+              if (absOffset > maxVisible) return null;
+
+              // Calculer les effets visuels de manière symétrique
+              const scale = 1 - absOffset * 0.15;
+              const translateX = offset * 350; // Décalage horizontal
+              const translateY = absOffset * 40; // Décalage vertical
+              const blur = absOffset * 2.5;
+              const opacity = 1 - absOffset * 0.3;
+              const brightness = 1 - absOffset * 0.2;
+
+              // Carte actuelle
+              if (offset === 0) {
+                return (
+                  <div
+                    key={profile.id}
+                    className="absolute left-1/2 w-[400px] h-full"
+                    style={{
+                      transform: "translateX(-50%)",
+                      zIndex: 100,
+                      transition:
+                        "all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+                    }}
+                  >
+                    <SwipeCard
+                      profile={profile}
+                      onSwipeLeft={handleSwipeLeft}
+                      onSwipeRight={handleSwipeRight}
+                    />
+                  </div>
+                );
+              }
+
+              // Cartes latérales
+              return (
+                <div
+                  key={profile.id}
+                  onClick={() => {
+                    // Naviguer vers cette carte
+                    setCurrentIndex(idx);
+                  }}
+                  className="absolute left-1/2 w-[400px] h-full rounded-3xl bg-card border border-border shadow-2xl overflow-hidden cursor-pointer hover:brightness-110 transition-all duration-300"
+                  style={{
+                    transform: `translateX(calc(-50% + ${translateX}px)) translateY(${translateY}px) scale(${scale})`,
+                    zIndex: 50 - absOffset,
+                    opacity: opacity,
+                    filter: `blur(${blur}px) brightness(${brightness})`,
+                    transition: "all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+                  }}
+                >
+                  <img
+                    src={profile.image || "/placeholder.svg"}
+                    alt={profile.name}
+                    className="w-full h-full object-cover"
                   />
-                )}
-              </div>
+                  <div
+                    className="absolute inset-0 bg-black/40 transition-opacity duration-800"
+                    style={{
+                      opacity: absOffset * 0.3,
+                    }}
+                  />
+                  {/* Indicateur de clic pour les cartes les plus proches */}
+                  {absOffset === 1 && (
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black/20">
+                      <div className="w-16 h-16 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center">
+                        <span className="text-3xl text-white">
+                          {offset > 0 ? "→" : "←"}
+                        </span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
 
-              {/* Action Buttons */}
-              <div className="flex items-center justify-center gap-4 mt-8 animate-fade-in-up">
-                <button
-                  onClick={handleSwipeLeft}
-                  className="w-14 h-14 rounded-full bg-red-500 text-white flex items-center justify-center hover:shadow-lg hover:scale-110 transition font-bold text-lg active:scale-95"
-                  title="Pass"
-                >
-                  ✕
-                </button>
+          {/* Action Buttons */}
+          <div className="flex items-center justify-center gap-4 mt-8 animate-fade-in-up">
+            <button
+              onClick={handleSwipeLeft}
+              className="w-14 h-14 rounded-full bg-red-500 text-white flex items-center justify-center hover:shadow-lg hover:scale-110 transition font-bold text-lg active:scale-95"
+              title="Pass"
+            >
+              ✕
+            </button>
 
-                <button
-                  onClick={handleSwipeRight}
-                  className="w-14 h-14 rounded-full bg-primary text-primary-foreground flex items-center justify-center hover:shadow-lg hover:scale-110 transition font-bold text-lg active:scale-95"
-                  title="Like"
-                >
-                  ♥
-                </button>
-              </div>
+            <button
+              onClick={handleSwipeRight}
+              className="w-14 h-14 rounded-full bg-primary text-primary-foreground flex items-center justify-center hover:shadow-lg hover:scale-110 transition font-bold text-lg active:scale-95"
+              title="Like"
+            >
+              ♥
+            </button>
+          </div>
 
-              <div className="text-center mt-8 text-base font-light text-foreground animate-fade-in-up">
-                <span className="font-semibold">{currentIndex + 1}</span> of{" "}
-                <span className="font-semibold">{profiles.length}</span>
-              </div>
-            </>
-          )}
+          <div className="text-center mt-8 text-base font-light text-foreground animate-fade-in-up">
+            Viewing{" "}
+            <span className="font-semibold">
+              {profiles[currentIndex % profiles.length]?.name}
+            </span>
+          </div>
         </div>
       </div>
     </main>

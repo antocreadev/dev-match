@@ -102,10 +102,9 @@ export function SwipeCard({
           }px) rotate(${45 + velocityRef.current}deg) scale(0.8)`;
           card.style.opacity = "0";
 
-          // Déclencher les particules au centre de la carte
-          const rect = card.getBoundingClientRect();
-          const particleX = rect.left + rect.width / 2;
-          const particleY = rect.top + rect.height / 2;
+          // Déclencher les particules au centre de l'écran
+          const particleX = window.innerWidth / 2;
+          const particleY = window.innerHeight / 2;
           console.log("❤️ Particles triggered at:", particleX, particleY);
           setParticleEffect({
             type: "heart",
@@ -124,10 +123,9 @@ export function SwipeCard({
           }px) rotate(${-45 - velocityRef.current}deg) scale(0.8)`;
           card.style.opacity = "0";
 
-          // Déclencher les particules au centre de la carte
-          const rect = card.getBoundingClientRect();
-          const particleX = rect.left + rect.width / 2;
-          const particleY = rect.top + rect.height / 2;
+          // Déclencher les particules au centre de l'écran
+          const particleX = window.innerWidth / 2;
+          const particleY = window.innerHeight / 2;
           console.log("✖️ Particles triggered at:", particleX, particleY);
           setParticleEffect({
             type: "cross",
@@ -190,28 +188,34 @@ export function SwipeCard({
                   {profile.name},{" "}
                   <span className="text-2xl">{profile.age}</span>
                 </h2>
-                <p className="text-sm text-gray-200 mt-1">{profile.location}</p>
+                <p className="text-sm text-gray-200 mt-1">
+                  📍 {profile.place_of_birth} {profile.nationality}
+                </p>
               </div>
               <Link
                 href={`/profile/${profile.id}`}
                 className="text-yellow-300 hover:text-yellow-200 transition font-semibold"
                 onClick={(e) => e.stopPropagation()}
               >
-                ⭐ {profile.rating}
+                ⭐ {profile.rating?.toFixed(1)}
               </Link>
             </div>
 
             <p className="text-sm text-gray-100 mb-3 line-clamp-2">
-              {profile.bio}
+              🏆 {profile.biggest_achievement}
+            </p>
+
+            <p className="text-xs text-gray-200 mb-3 italic">
+              💡 {profile.fun_fact}
             </p>
 
             <div className="flex flex-wrap gap-2">
-              {profile.interests.slice(0, 3).map((interest) => (
+              {profile.coding_strengths.slice(0, 3).map((strength) => (
                 <span
-                  key={interest}
+                  key={strength}
                   className="text-xs bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full"
                 >
-                  {interest}
+                  {strength}
                 </span>
               ))}
             </div>

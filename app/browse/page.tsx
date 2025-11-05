@@ -19,16 +19,16 @@ export default function Browse() {
       const interestMatch =
         selectedInterests.length === 0 ||
         selectedInterests.some((interest) =>
-          profile.interests.includes(interest)
+          profile.coding_strengths.some(strength => strength.toLowerCase().includes(interest.toLowerCase()))
         );
       return ageMatch && interestMatch;
     });
 
     // Sort
     if (sortBy === "rating") {
-      filtered.sort((a, b) => b.rating - a.rating);
+      filtered.sort((a, b) => (b.rating || 0) - (a.rating || 0));
     } else if (sortBy === "followers") {
-      filtered.sort((a, b) => b.followers - a.followers);
+      filtered.sort((a, b) => (b.followers || 0) - (a.followers || 0));
     }
 
     return filtered;
@@ -198,7 +198,7 @@ export default function Browse() {
                           {profile.name}, {profile.age}
                         </h3>
                         <p className="text-sm text-gray-200">
-                          {profile.location}
+                          📍 {profile.place_of_birth} {profile.nationality}
                         </p>
                         <div className="flex gap-2 mt-3">
                           <button
