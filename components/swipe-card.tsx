@@ -4,7 +4,7 @@ import { useRef, useEffect, useState } from "react";
 import type { Profile } from "@/lib/mock-data";
 import Link from "next/link";
 import { SoundManager } from "./sound-manager";
-import { ParticleSystem } from "./particle-system";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface SwipeCardProps {
   profile: Profile;
@@ -19,234 +19,167 @@ export function SwipeCard({
 }: SwipeCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [xPos, setXPos] = useState(0);
-  const [yPos, setYPos] = useState(0);
-  const [startX, setStartX] = useState(0);
-  const [startY, setStartY] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
-  const [particleEffect, setParticleEffect] = useState<{
-    type: "heart" | "cross";
-    x: number;
-    y: number;
-  } | null>(null);
   const velocityRef = useRef(0);
 
-  useEffect(() => {
-    if (cardRef.current) {
-      cardRef.current.style.transform =
-        "translateX(0) translateY(0) rotate(0deg) scale(1)";
-      cardRef.current.style.opacity = "1";
-      cardRef.current.style.transition =
-        "all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)";
-      setXPos(0);
-      setYPos(0);
-      setStartX(0);
-      setStartY(0);
-      setParticleEffect(null);
-    }
-  }, [profile.id]);
+  // Constants
+  const ROTATION_FACTOR = 0.05;
+  const THRESHOLD = 200;
 
   useEffect(() => {
-    SoundManager.init();
-  }, []);
+    // Reset state when profile changes
+    if (cardRef.current) {
+       cardRef.current.style.transform = "translate3d(0, 0, 0) rotate(0deg)";
+       cardRef.current.style.transition = "transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)";
+    }
+    setXPos(0);
+  }, [profile.id]);
 
   useEffect(() => {
     const card = cardRef.current;
     if (!card) return;
 
+    let startX = 0;
+    let startY = 0;
     let currentX = 0;
     let currentY = 0;
-    let currentRotation = 0;
-    let lastX = 0;
 
     const handleMouseDown = (e: MouseEvent) => {
       setIsDragging(true);
-      setStartX(e.clientX);
-      setStartY(e.clientY);
-      lastX = e.clientX;
+      startX = e.clientX;
+      startY = e.clientY;
       card.style.cursor = "grabbing";
       card.style.transition = "none";
     };
 
     const handleMouseMove = (e: MouseEvent) => {
-      if (startX === 0) return;
-
+      if (!startX) return;
       currentX = e.clientX - startX;
-      currentY = (e.clientY - startY) * 0.3;
-      velocityRef.current = e.clientX - lastX;
-      lastX = e.clientX;
+      currentY = (e.clientY - startY) * 0.2; // Dampen Y axis
+      velocityRef.current = e.movementX;
 
-      currentRotation = (currentX / window.innerWidth) * 35;
-      const scale = 1 - (Math.abs(currentX) / window.innerWidth) * 0.1;
-
-      setXPos(currentX);
-      setYPos(currentY);
-      card.style.transform = `translateX(${currentX}px) translateY(${currentY}px) rotate(${currentRotation}deg) scale(${scale})`;
+      setXPos(currentX); // Update React state for overlays
+      
+      const rotate = currentX * ROTATION_FACTOR;
+      card.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) rotate(${rotate}deg)`;
     };
 
     const handleMouseUp = () => {
       setIsDragging(false);
       card.style.cursor = "grab";
-      const threshold = window.innerWidth * 0.25;
+      startX = 0;
 
-      if (
-        Math.abs(currentX) > threshold ||
-        Math.abs(velocityRef.current) > 10
-      ) {
-        card.style.transition = "all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
-
-        if (currentX > 0) {
-          const finalX =
-            window.innerWidth * 1.2 + Math.abs(velocityRef.current) * 2;
-          card.style.transform = `translateX(${finalX}px) translateY(${
-            -150 + currentY
-          }px) rotate(${45 + velocityRef.current}deg) scale(0.8)`;
-          card.style.opacity = "0";
-
-          // Déclencher les particules au centre de l'écran
-          const particleX = window.innerWidth / 2;
-          const particleY = window.innerHeight / 2;
-          console.log("❤️ Particles triggered at:", particleX, particleY);
-          setParticleEffect({
-            type: "heart",
-            x: particleX,
-            y: particleY,
-          });
-
-          SoundManager.play("swipeRight");
-          SoundManager.play("like");
-          setTimeout(onSwipeRight, 800); // Attendre que la carte parte et les particules commencent
+      if (Math.abs(currentX) > THRESHOLD) {
+        // SWIPE TRIGGERED
+        const direction = currentX > 0 ? 1 : -1;
+        const endX = window.innerWidth * direction * 1.5;
+        
+        card.style.transition = "transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)";
+        card.style.transform = `translate3d(${endX}px, ${currentY + 100}px, 0) rotate(${direction * 45}deg)`;
+        
+        // Trigger Callback
+        if (direction === 1) {
+             SoundManager.play("like");
+             setTimeout(onSwipeRight, 400); 
         } else {
-          const finalX =
-            -window.innerWidth * 1.2 - Math.abs(velocityRef.current) * 2;
-          card.style.transform = `translateX(${finalX}px) translateY(${
-            -150 + currentY
-          }px) rotate(${-45 - velocityRef.current}deg) scale(0.8)`;
-          card.style.opacity = "0";
-
-          // Déclencher les particules au centre de l'écran
-          const particleX = window.innerWidth / 2;
-          const particleY = window.innerHeight / 2;
-          console.log("✖️ Particles triggered at:", particleX, particleY);
-          setParticleEffect({
-            type: "cross",
-            x: particleX,
-            y: particleY,
-          });
-
-          SoundManager.play("swipeLeft");
-          setTimeout(onSwipeLeft, 800); // Attendre que la carte parte et les particules commencent
+             SoundManager.play("swipeLeft");
+             setTimeout(onSwipeLeft, 400);
         }
-      } else {
-        card.style.transition = "all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)";
-        card.style.transform =
-          "translateX(0) translateY(0) rotate(0deg) scale(1)";
-        setXPos(0);
-        setYPos(0);
-      }
 
-      setStartX(0);
-      setStartY(0);
+      } else {
+        // RESET
+        card.style.transition = "transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1)";
+        card.style.transform = "translate3d(0, 0, 0) rotate(0deg)";
+        setXPos(0);
+      }
     };
 
     card.addEventListener("mousedown", handleMouseDown);
-    document.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mouseup", handleMouseUp);
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mouseup", handleMouseUp);
 
     return () => {
       card.removeEventListener("mousedown", handleMouseDown);
-      document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseup", handleMouseUp);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseup", handleMouseUp);
     };
-  }, [startX, startY, onSwipeLeft, onSwipeRight]);
+  }, [onSwipeLeft, onSwipeRight]);
+
+
+  // Derived animations values
+  const likeOpacity = Math.min(Math.max(xPos / 100, 0), 1);
+  const nopeOpacity = Math.min(Math.max(-xPos / 100, 0), 1);
+  const likeScale = 0.5 + likeOpacity * 0.5;
+  const nopeScale = 0.5 + nopeOpacity * 0.5;
 
   return (
     <>
       <div
         ref={cardRef}
-        className="absolute w-full h-full rounded-3xl overflow-hidden cursor-grab shadow-2xl bg-white"
-        style={{
-          userSelect: "none",
-          touchAction: "none",
-        }}
+        className="absolute inset-0 rounded-[32px] overflow-hidden cursor-grab shadow-2xl bg-black border border-white/10"
+        style={{ userSelect: "none", touchAction: "none" }}
       >
-        <div className="relative w-full h-full">
-          {/* Background Image */}
-          <img
-            src={profile.image || "/placeholder.svg"}
-            alt={profile.name}
-            className="w-full h-full object-cover"
-          />
+          {/* Main Image */}
+          <div className="relative w-full h-full">
+            <img
+              src={profile.image || "/placeholder.svg"}
+              alt={profile.name}
+              className="w-full h-full object-cover pointer-events-none select-none"
+            />
+            
+            {/* Dark Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90" />
 
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+            {/* Profile Content */}
+            <div className="absolute bottom-0 left-0 right-0 p-8 text-white select-none pointer-events-none">
+               <div className="mb-2 flex items-center gap-3">
+                 <h2 className="text-5xl font-black tracking-tighter uppercase">{profile.name}</h2>
+                 <div className="px-3 py-1 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-xs font-mono">
+                    {profile.age} Y/O
+                 </div>
+               </div>
 
-          {/* Profile Info */}
-          <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-            <div className="flex items-end justify-between mb-4">
-              <div>
-                <h2 className="text-3xl font-bold">
-                  {profile.name},{" "}
-                  <span className="text-2xl">{profile.age}</span>
-                </h2>
-                <p className="text-sm text-gray-200 mt-1">
-                  📍 {profile.place_of_birth} {profile.nationality}
-                </p>
-              </div>
-              <Link
-                href={`/profile/${profile.id}`}
-                className="text-yellow-300 hover:text-yellow-200 transition font-semibold"
-                onClick={(e) => e.stopPropagation()}
-              >
-                ⭐ {profile.rating?.toFixed(1)}
-              </Link>
+               <p className="text-xl font-light text-gray-300 mb-6">{profile.role}</p>
+
+               <div className="flex flex-wrap gap-2 mb-6">
+                 {profile.coding_strengths.slice(0, 3).map(skill => (
+                    <span key={skill} className="px-4 py-1.5 rounded-full border border-white/20 bg-black/40 text-xs font-mono uppercase tracking-wider text-gray-300">
+                      {skill}
+                    </span>
+                 ))}
+               </div>
             </div>
 
-            <p className="text-sm text-gray-100 mb-3 line-clamp-2">
-              🏆 {profile.biggest_achievement}
-            </p>
-
-            <p className="text-xs text-gray-200 mb-3 italic">
-              💡 {profile.fun_fact}
-            </p>
-
-            <div className="flex flex-wrap gap-2">
-              {profile.coding_strengths.slice(0, 3).map((strength) => (
-                <span
-                  key={strength}
-                  className="text-xs bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full"
-                >
-                  {strength}
-                </span>
-              ))}
+            {/* LIKE OVERLAY (Green) */}
+            <div 
+               className="absolute top-12 left-12 border-[8px] border-[#4fd1c5] rounded-xl px-4 py-2 transform -rotate-12 opacity-0"
+               style={{ opacity: likeOpacity, transform: `scale(${likeScale}) rotate(-12deg)` }}
+            >
+               <span className="text-6xl font-black text-[#4fd1c5] tracking-widest uppercase drop-shadow-[0_0_15px_rgba(79,209,197,0.8)]">
+                  MATCH
+               </span>
             </div>
+            
+             {/* NOPE OVERLAY (Red) */}
+            <div 
+               className="absolute top-12 right-12 border-[8px] border-[#ff4757] rounded-xl px-4 py-2 transform rotate-12 opacity-0"
+               style={{ opacity: nopeOpacity, transform: `scale(${nopeScale}) rotate(12deg)` }}
+            >
+               <span className="text-6xl font-black text-[#ff4757] tracking-widest uppercase drop-shadow-[0_0_15px_rgba(255,71,87,0.8)]">
+                  PASS
+               </span>
+            </div>
+            
+            {/* Flash Effect on trigger */}
+            <div 
+               className={`absolute inset-0 bg-[#4fd1c5]/20 mix-blend-overlay pointer-events-none transition-opacity duration-300 ${xPos > 200 ? 'opacity-100' : 'opacity-0'}`}
+            />
+             <div 
+               className={`absolute inset-0 bg-[#ff4757]/20 mix-blend-overlay pointer-events-none transition-opacity duration-300 ${xPos < -200 ? 'opacity-100' : 'opacity-0'}`}
+            />
+
           </div>
-
-          {/* Action Hints */}
-          {xPos > 50 && (
-            <div className="absolute top-8 right-8 flex items-center gap-2 text-green-400 animate-pulse">
-              <span className="text-4xl">♥</span>
-              <span className="font-bold text-lg">LIKE</span>
-            </div>
-          )}
-
-          {xPos < -50 && (
-            <div className="absolute top-8 left-8 flex items-center gap-2 text-red-400 animate-pulse">
-              <span className="text-4xl">✕</span>
-              <span className="font-bold text-lg">PASS</span>
-            </div>
-          )}
-        </div>
       </div>
-
-      {/* Système de particules */}
-      {particleEffect && (
-        <ParticleSystem
-          type={particleEffect.type}
-          x={particleEffect.x}
-          y={particleEffect.y}
-          onComplete={() => setParticleEffect(null)}
-        />
-      )}
     </>
   );
 }

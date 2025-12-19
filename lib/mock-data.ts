@@ -56,7 +56,23 @@ export interface Profile {
   availability: "Open for work" | "Busy" | "Freelancing";
   soft_skills: string[];
   languages: { language: string; level: string }[];
-  match_score: number; // Computed "match" score
+  match_score: number;
+  // Football Theme Fields
+  transfer_fee: string; // e.g. "$120k / yr"
+  market_value: string; // e.g. "€35M"
+  agent_note: string; // Funny note
+  club_status: "Free Agent" | "On Loan" | "Contract Expiring";
+  jersey_number: number;
+  // Dev Attributes (0-100)
+  metrics: {
+      algo: number;   // PACE -> Algorithms
+      system: number; // SHO -> System Design
+      test: number;   // PAS -> Testing
+      ui: number;     // DRI -> UI/UX
+      debug: number;  // DEF -> Debugging
+      lead: number;   // PHY -> Leadership
+  };
+  // Computed "match" score
   verified: boolean;
   followers: number;
   rating: number;
@@ -87,15 +103,51 @@ const projectTemplates = {
   ]
 };
 
+// Simple seeded random number generator
+class SeededRandom {
+  private seed: number;
+
+  constructor(seed: string) {
+    this.seed = this.hashString(seed);
+  }
+
+  private hashString(str: string): number {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      const char = str.charCodeAt(i);
+      hash = (hash << 5) - hash + char;
+      hash = hash & hash; // Convert to 32bit integer
+    }
+    return Math.abs(hash);
+  }
+
+  // Returns number between 0 and 1
+  next(): number {
+    const x = Math.sin(this.seed++) * 10000;
+    return x - Math.floor(x);
+  }
+
+  // Returns integer between min and max (inclusive)
+  range(min: number, max: number): number {
+    return Math.floor(this.next() * (max - min + 1)) + min;
+  }
+  
+  // Pick random item from array
+  pick<T>(arr: T[]): T {
+    return arr[Math.floor(this.next() * arr.length)];
+  }
+
+  // Pick random subset from array
+  sample<T>(arr: T[], count: number): T[] {
+    const shuffled = [...arr].sort(() => 0.5 - this.next());
+    return shuffled.slice(0, count);
+  }
+}
+
 const funCompanyNames = ["TechNova", "StellarLogic", "QuantumSoft", "BlueWave Digital", "FutureDynamics", "PixelCrafters"];
 const universities = ["University of Technology", "Institute of Advanced Code", "Global Dev Academy", "Polytechnic of Innovation"];
 
-function getRandomSubset(arr: any[], count: number) {
-  const shuffled = [...arr].sort(() => 0.5 - Math.random());
-  return shuffled.slice(0, count);
-}
-
-function generateProjects(role: string): Project[] {
+function generateProjects(role: string, rng: SeededRandom): Project[] {
   let pool = projectTemplates.frontend;
   if (role.toLowerCase().includes("back")) pool = [...pool, ...projectTemplates.backend];
   if (role.toLowerCase().includes("data")) pool = projectTemplates.data;
@@ -104,61 +156,104 @@ function generateProjects(role: string): Project[] {
   // Mix in some randoms if pool is small
   if (pool.length < 3) pool = [...pool, ...projectTemplates.frontend];
 
-  const selected = getRandomSubset(pool, 3);
+  const selected = rng.sample(pool, 3);
   return selected.map(p => ({
-    ...p,
+    title: p.title,
+    description: p.desc,
+    tags: p.tags,
     link: "#",
-    image: `https://picsum.photos/seed/${p.title.replace(" ", "")}/800/600`,
-    year: (2023 + Math.floor(Math.random() * 2)).toString()
+    image: `https://picsum.photos/seed/${p.title.replace(" ", "")}/800/600`, // Better seed
+    year: (2023 + rng.range(0, 1)).toString()
   }));
 }
 
-function generateTimeline() {
-  const startYear = 2020 + Math.floor(Math.random() * 2);
+function generateTimeline(role: string, rng: SeededRandom) {
+  const startYear = 2020 + rng.range(0, 2);
   return [
-    { year: `${startYear + 3} - Present`, title: "Senior Developer", description: `Leading key projects at ${funCompanyNames[Math.floor(Math.random() * funCompanyNames.length)]}.`, type: "work" },
+    { year: `${startYear + 3} - Present`, title: "Senior Developer", description: `Leading key projects at ${rng.pick(funCompanyNames)}.`, type: "work" },
     { year: `${startYear + 1} - ${startYear + 3}`, title: "Full Stack Developer", description: "Developed scalable web applications and mentored juniors.", type: "work" },
-    { year: `${startYear} - ${startYear + 1}`, title: "Master's Degree", description: `Graduated with honors from ${universities[Math.floor(Math.random() * universities.length)]}.`, type: "education" },
+    { year: `${startYear} - ${startYear + 1}`, title: "Master's Degree", description: `Graduated with honors from ${rng.pick(universities)}.`, type: "education" },
     { year: `${startYear - 1}`, title: "Internship", description: "First professional experience in a fast-paced startup environment.", type: "work" },
   ] as TimelineItem[];
 }
 
+function generateTestimonials(rng: SeededRandom): Testimonial[] {
+  const testimonials = [
+    { name: "Sarah Connor", role: "Product Manager", quote: "One of the most talented developers I've worked with. Delivered the project ahead of schedule.", avatar: "" },
+    { name: "John Wick", role: "Tech Lead", quote: "Exceptional problem-solving skills and code quality.", avatar: "" },
+    { name: "Ellen Ripley", role: "CTO", quote: "A true asset to any team, consistently exceeding expectations.", avatar: "" },
+  ];
+  return rng.sample(testimonials, rng.range(1, 2));
+}
+
 // Transform JSON data with computed fields
 export const mockProfiles: Profile[] = (profilesData as any[]).map((profile) => {
-  const isData = profile.role.toLowerCase().includes("data");
-  const isBack = profile.role.toLowerCase().includes("back");
-  
-  return {
-    ...profile,
-    role: profile.role || "Developer",
-    bio: profile.bio || "Passionate developer crafting digital experiences.",
-    nationality_text: profile.nationality_text || "Unknown",
+    const seededRandom = new SeededRandom(profile.id);
     
-    // Rich Generated Data
-    projects: generateProjects(profile.role),
-    timeline: generateTimeline(),
-    testimonials: [
-      { name: "Sarah Connor", role: "Product Manager", quote: "One of the most talented developers I've worked with. Delivered the project ahead of schedule.", avatar: "" },
-      { name: "John Wick", role: "Tech Lead", quote: "Exceptional problem-solving skills and code quality.", avatar: "" },
-    ],
-    github_stats: {
-      commits: Math.floor(Math.random() * 2000) + 500,
-      prs: Math.floor(Math.random() * 100) + 20,
-      stars: Math.floor(Math.random() * 500) + 50,
-      contributions: Array.from({length: 7}, () => Math.floor(Math.random() * 15))
-    },
-    availability: Math.random() > 0.3 ? "Open for work" : "Busy",
-    soft_skills: getRandomSubset(["Leadership", "Communication", "Mentoring", "Agile", "Public Speaking", "Design Thinking"], 4),
-    languages: [
-      { language: "French", level: "Native" },
-      { language: "English", level: "C1 Advanced" },
-      ...(Math.random() > 0.7 ? [{ language: "Spanish", level: "B2 Intermediate" }] : [])
-    ],
-    match_score: Math.floor(Math.random() * 15) + 85, // High scores for everyone!
-    verified: true,
-    followers: Math.floor(1000 + Math.random() * 4000),
-    rating: 4.5 + Math.random() * 0.5,
-  };
+    const randomItem = <T>(arr: T[]): T => arr[Math.floor(seededRandom.next() * arr.length)];
+    const randomInt = (min: number, max: number) => Math.floor(seededRandom.next() * (max - min + 1)) + min;
+
+    // Generate Football x Tech Data
+    const fees = ["$90k", "$120k", "$150k", "$180k", "$200k+", "Equity Only"];
+    const values = ["€5M", "€12M", "€35M", "€80M", "€150M", "Priceless"];
+    const availabilityStatus: Profile["availability"][] = ["Open for work", "Busy", "Freelancing"];
+    const statuses: Profile["club_status"][] = ["Free Agent", "On Loan", "Contract Expiring"];
+    const notes = [
+      "Demands a standing desk in the contract.",
+      "Will only play if coffee is 100% Arabica.",
+      "Refuses to document legacy code.",
+      "Weak foot: CSS.",
+      "Can deploy to production on Fridays.",
+      "Scores 100% on Lighthouse audits.",
+      "Legendary git commit messages.",
+      "Needs a signing bonus of 1 brand new MacBook Pro.",
+      "Plays best in Dark Mode.",
+      "Rejects any PR under 1000 lines (power move).",
+      "Yellow carded once for breaking the build.",
+    ];
+
+    // Generate Metrics
+    const metrics = {
+        algo: randomInt(60, 95),
+        system: randomInt(60, 95),
+        test: randomInt(50, 95),
+        ui: randomInt(60, 95),
+        debug: randomInt(70, 99),
+        lead: randomInt(50, 95),
+    };
+
+    return {
+      ...profile,
+      rating: 4.0 + seededRandom.next(), // 4.0 - 5.0
+      followers: Math.floor(seededRandom.next() * 10000),
+      verified: seededRandom.next() > 0.5,
+      role: profile.role || "Software Engineer", // Fallback
+      bio: profile.bio || profile.detailed_bio?.slice(0, 100) + "..." || "No bio available.",
+      detailed_bio: profile.detailed_bio || "A passionate developer ready to change the world with code. Dedicated to fast, accessible, and beautiful web experiences.",
+      nationality: profile.nationality,
+      nationality_text: profile.nationality_text || "Unknown",
+      future_plans: profile.future_plans || "To build the next big thing.",
+      projects: generateProjects(profile.role || "Developer", seededRandom),
+      timeline: generateTimeline(profile.role || "Developer", seededRandom),
+      testimonials: generateTestimonials(seededRandom),
+      github_stats: {
+        commits: randomInt(100, 5000),
+        prs: randomInt(10, 500),
+        stars: randomInt(50, 2000),
+        contributions: Array.from({ length: 12 }, () => randomInt(10, 100))
+      },
+      availability: randomItem(availabilityStatus),
+      soft_skills: ["Leadership", "Communication", "Teamwork", "Problem Solving"].sort(() => seededRandom.next() - 0.5).slice(0, 3),
+      languages: ["English", "French", "Spanish", "German"].sort(() => seededRandom.next() - 0.5).slice(0, randomInt(1, 3)).map(l => ({ language: l, level: "Fluent" })),
+      match_score: randomInt(65, 99),
+      // Theme Fields
+      transfer_fee: randomItem(fees) + " / yr",
+      market_value: randomItem(values),
+      agent_note: randomItem(notes),
+      club_status: randomItem(statuses),
+      jersey_number: randomInt(1, 99),
+      metrics, // Added Metrics
+    };
 });
 
 export const interests = [

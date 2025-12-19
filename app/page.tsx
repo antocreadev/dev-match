@@ -4,7 +4,26 @@ import { useState, useEffect } from "react";
 import { mockProfiles, type Profile } from "@/lib/mock-data";
 import { SwipeCard } from "@/components/swipe-card";
 import { SoundManager } from "@/components/sound-manager";
+import { SquadManager } from "@/lib/storage";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import { Trophy, Wind, Zap, Activity, Shirt, Users, Search } from "lucide-react";
+import { Toaster, toast } from "sonner";
+
+// Kinetic Text Component
+const Marquee = ({ text, direction = 1, speed = 15 }: { text: string; direction?: number; speed?: number }) => (
+  <div className="flex whitespace-nowrap overflow-hidden absolute inset-0 items-center justify-center opacity-5 pointer-events-none select-none">
+    <motion.div
+      className="flex gap-8 text-[20vw] font-black uppercase tracking-tighter text-white leading-none"
+      animate={{ x: direction > 0 ? [-1000, 0] : [0, -1000] }}
+      transition={{ repeat: Infinity, ease: "linear", duration: speed }}
+    >
+      {[...Array(4)].map((_, i) => (
+         <span key={i}>{text} ●&nbsp;</span>
+      ))}
+    </motion.div>
+  </div>
+);
 
 export default function Home() {
   const [profiles, setProfiles] = useState<Profile[]>([]);
@@ -16,176 +35,207 @@ export default function Home() {
   }, []);
 
   const handleSwipeLeft = () => {
-    // Passer à la carte suivante (boucle infinie)
     setCurrentIndex((prev) => (prev + 1) % profiles.length);
   };
 
   const handleSwipeRight = () => {
-    // Passer à la carte suivante (boucle infinie)
+    const profile = profiles[currentIndex];
+    
+    // Check if already signed
+    if (SquadManager.isSigned(profile.id)) {
+       toast.error("ALREADY SIGNED!", {
+         description: `${profile.name} is already in your squad.`,
+         icon: "🚫",
+         style: { background: "#ef4444", color: "white", border: "none" }
+       });
+    } else {
+       SquadManager.signPlayer(profile);
+       // Football Manager style toast
+       toast.success("AGREEMENT REACHED!", {
+         description: `You have successfully signed ${profile.name} to your squad.`,
+         icon: "✍️",
+         style: {
+           background: "#10b981",
+           color: "white",
+           border: "none",
+           fontFamily: "monospace"
+         }
+       });
+    }
+
     setCurrentIndex((prev) => (prev + 1) % profiles.length);
   };
 
   if (profiles.length === 0) {
-    return <div className="min-h-screen bg-background" />;
+    return <div className="min-h-screen bg-[#0a0a0a]" />;
   }
 
   return (
-    <main className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/50 backdrop-blur-md border-b border-border animate-slide-in-down">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-          <Link
-            href="/"
-            className="flex items-center gap-2 hover:opacity-80 transition"
-          >
-            <div className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
-              <span className="text-xl">🔥</span>
-            </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              DevMatch
-            </span>
-          </Link>
-
-          <nav className="flex items-center gap-6">
-            <Link
-              href="/featured"
-              className="flex items-center gap-2 px-4 py-2 rounded-full hover:bg-muted transition font-medium text-sm hover:scale-105"
-            >
-              <span>⭐</span>
-              <span>Featured</span>
-            </Link>
-            <Link
-              href="/browse"
-              className="flex items-center gap-2 px-4 py-2 rounded-full hover:bg-muted transition font-medium text-sm hover:scale-105"
-            >
-              <span>👥</span>
-              <span>Browse</span>
-            </Link>
-            <button className="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center hover:shadow-lg hover:scale-110 transition">
-              👤
-            </button>
-          </nav>
+    <main className="min-h-screen bg-[#0a0a0a] text-white overflow-hidden relative selection:bg-yellow-500 selection:text-black">
+      <Toaster position="top-center" />
+      
+      {/* Immersive Background */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_0%,_#1e1b4b_0%,_#000000_60%)]" />
+        {/* Grain Noise */}
+        <div className="absolute inset-0 opacity-20 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] brightness-100 contrast-150 mix-blend-overlay" />
+        
+        {/* Kinetic Typography Layer */}
+        <div className="absolute inset-0 flex flex-col justify-center overflow-hidden">
+           <div className="relative h-[20vw]">
+             <Marquee text="DEV LEAGUE 25" direction={1} speed={30}/>
+           </div>
+           <div className="relative h-[20vw]">
+             <Marquee text="TRANSFER MARKET" direction={-1} speed={25}/>
+           </div>
         </div>
-      </header>
+      </div>
 
-      {/* Main Content */}
-      <div className="pt-20 pb-20 px-4 flex items-center justify-center min-h-screen overflow-hidden">
-        <div className="w-full max-w-7xl">
-          {/* Cards Carousel - Afficher toutes les cartes horizontalement */}
-          <div className="relative h-[600px] mb-8 flex items-center justify-center">
-            {/* Générer toutes les positions visibles */}
+      {/* HUD Elements */}
+      <div className="fixed inset-0 pointer-events-none z-50 p-6 flex flex-col justify-between">
+         {/* Top HUD */}
+         <div className="flex justify-between items-start">
+            <Link href="/" className="pointer-events-auto group">
+               <div className="flex items-center gap-2">
+                 <div className="w-10 h-10 border border-white/20 bg-white/5 backdrop-blur-md rounded-full flex items-center justify-center group-hover:bg-white group-hover:text-black transition duration-300">
+                    <Trophy className="w-5 h-5"/>
+                 </div>
+                 <div className="flex flex-col">
+                   <span className="text-sm font-bold font-mono tracking-widest">DEV LEAGUE</span>
+                   <span className="text-[10px] text-gray-500 font-mono">SEASON 2025</span>
+                 </div>
+               </div>
+            </Link>
+
+            <nav className="hidden md:flex items-center gap-2 pointer-events-auto bg-white/5 backdrop-blur-md p-1 rounded-full border border-white/10">
+               <Link href="/browse" className="px-6 py-2 rounded-full hover:bg-white hover:text-black transition duration-300 text-sm font-bold font-mono uppercase flex items-center gap-2">
+                 <Search className="w-4 h-4" /> Scouting
+               </Link>
+               <Link href="/squad" className="px-6 py-2 rounded-full hover:bg-white hover:text-black transition duration-300 text-sm font-bold font-mono uppercase flex items-center gap-2">
+                 <Shirt className="w-4 h-4" /> Locker Room
+               </Link>
+            </nav>
+
+            <div className="flex flex-col items-end font-mono text-xs text-gray-500">
+               <div className="flex items-center gap-2 text-green-400">
+                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"/>
+                  MARKET OPEN
+               </div>
+               <span>Deadline: 23:59 PM</span>
+            </div>
+         </div>
+
+         {/* Bottom HUD */}
+         <div className="flex justify-between items-end">
+            <div className="hidden md:block">
+               <div className="font-mono text-xs text-gray-500 mb-1">CURRENT TARGET</div>
+               <div className="text-lg font-bold font-mono text-yellow-500">{profiles[currentIndex]?.name}</div>
+            </div>
+            
+            {/* Animated Scroll Hint */}
+            <div className="absolute left-1/2 bottom-8 -translate-x-1/2 flex flex-col items-center gap-2">
+               <div className="w-[1px] h-12 bg-gradient-to-b from-transparent via-white to-transparent"/>
+               <span className="text-[10px] font-mono tracking-[0.3em] text-gray-500">SCOUT PLAYER</span>
+            </div>
+
+            <div className="flex items-center gap-4">
+              <Link href="/browse" className="pointer-events-auto group relative overflow-hidden rounded-full p-[1px]">
+                 <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2E8F0_0%,#500724_50%,#E2E8F0_100%)]" />
+                 <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-8 py-3 text-sm font-medium text-white backdrop-blur-3xl px-8 py-3 text-xs font-bold font-mono uppercase tracking-widest transition-colors hover:bg-slate-950/50">
+                   FULL TRANSFER LIST
+                 </span>
+              </Link>
+            </div>
+         </div>
+      </div>
+
+      {/* Main Card Stack */}
+      <div className="relative pt-20 pb-20 px-4 flex items-center justify-center min-h-screen z-20">
+        <div className="w-full max-w-7xl perspective-1000">
+          <div className="relative h-[600px] flex items-center justify-center transform-style-3d">
             {profiles.map((profile, idx) => {
-              // Calculer l'offset circulaire correctement
               const totalCards = profiles.length;
               let offset = idx - currentIndex;
 
-              // Normaliser l'offset pour la distance la plus courte
               while (offset > totalCards / 2) offset -= totalCards;
               while (offset < -totalCards / 2) offset += totalCards;
 
               const maxVisible = 3;
               const absOffset = Math.abs(offset);
 
-              // Ne pas afficher les cartes trop loin
               if (absOffset > maxVisible) return null;
 
-              // Calculer les effets visuels de manière symétrique
-              const scale = 1 - absOffset * 0.15;
-              const translateX = offset * 350; // Décalage horizontal
-              const translateY = absOffset * 40; // Décalage vertical
-              const blur = absOffset * 2.5;
+              const scale = 1 - absOffset * 0.1;
+              const translateX = offset * 50; 
+              const translateZ = -absOffset * 100;
+              const rotateY = offset * -5;
+              const blur = absOffset * 4;
               const opacity = 1 - absOffset * 0.3;
-              const brightness = 1 - absOffset * 0.2;
 
-              // Carte actuelle
               if (offset === 0) {
                 return (
-                  <div
+                  <motion.div
+                    layoutId={`card-${profile.id}`}
                     key={profile.id}
-                    className="absolute left-1/2 w-[400px] h-full"
-                    style={{
-                      transform: "translateX(-50%)",
-                      zIndex: 100,
-                      transition:
-                        "all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
-                    }}
+                    className="absolute w-full md:w-[450px] h-[650px]"
+                    style={{ zIndex: 100 }}
                   >
                     <SwipeCard
                       profile={profile}
                       onSwipeLeft={handleSwipeLeft}
                       onSwipeRight={handleSwipeRight}
                     />
-                  </div>
+                  </motion.div>
                 );
               }
 
-              // Cartes latérales
               return (
-                <div
+                <motion.div
                   key={profile.id}
-                  onClick={() => {
-                    // Naviguer vers cette carte
-                    setCurrentIndex(idx);
-                  }}
-                  className="absolute left-1/2 w-[400px] h-full rounded-3xl bg-card border border-border shadow-2xl overflow-hidden cursor-pointer hover:brightness-110 transition-all duration-300"
-                  style={{
-                    transform: `translateX(calc(-50% + ${translateX}px)) translateY(${translateY}px) scale(${scale})`,
-                    zIndex: 50 - absOffset,
+                  onClick={() => setCurrentIndex(idx)}
+                  className="absolute w-full md:w-[450px] h-[650px] rounded-[32px] bg-[#1a1a1a] border border-white/5 overflow-hidden cursor-pointer"
+                  animate={{
+                    x: offset * 320, // Spread nicely
+                    y: absOffset * 20, // Slight curve down
+                    z: -absOffset * 100,
+                    scale: scale,
+                    rotate: offset * 4,
                     opacity: opacity,
-                    filter: `blur(${blur}px) brightness(${brightness})`,
-                    transition: "all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+                    filter: `blur(${blur}px) brightness(${1 - absOffset * 0.3})`,
                   }}
+                  transition={{ type: "spring", stiffness: 200, damping: 25 }}
+                  style={{ zIndex: 50 - absOffset }}
                 >
                   <img
                     src={profile.image || "/placeholder.svg"}
                     alt={profile.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover grayscale opacity-50"
                   />
-                  <div
-                    className="absolute inset-0 bg-black/40 transition-opacity duration-800"
-                    style={{
-                      opacity: absOffset * 0.3,
-                    }}
-                  />
-                  {/* Indicateur de clic pour les cartes les plus proches */}
-                  {absOffset === 1 && (
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black/20">
-                      <div className="w-16 h-16 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center">
-                        <span className="text-3xl text-white">
-                          {offset > 0 ? "→" : "←"}
-                        </span>
-                      </div>
-                    </div>
-                  )}
-                </div>
+                  <div className="absolute inset-0 bg-black/60"/>
+                </motion.div>
               );
             })}
           </div>
 
-          {/* Action Buttons */}
-          <div className="flex items-center justify-center gap-4 mt-8 animate-fade-in-up">
+          {/* Controls */}
+          <div className="flex items-center justify-center gap-8 mt-12 relative z-30">
             <button
               onClick={handleSwipeLeft}
-              className="w-14 h-14 rounded-full bg-red-500 text-white flex items-center justify-center hover:shadow-lg hover:scale-110 transition font-bold text-lg active:scale-95"
-              title="Pass"
+              className="group w-16 h-16 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm flex items-center justify-center hover:bg-red-500/20 hover:border-red-500/50 transition-all duration-300"
             >
-              ✕
+              <Wind className="w-6 h-6 text-gray-400 group-hover:text-red-500 transition-colors"/>
             </button>
+
+            <div className="px-6 py-2 rounded-full border border-white/10 bg-black/40 backdrop-blur-md font-mono text-xs tracking-widest text-gray-400">
+               {currentIndex + 1} / {profiles.length} (TARGET)
+            </div>
 
             <button
               onClick={handleSwipeRight}
-              className="w-14 h-14 rounded-full bg-primary text-primary-foreground flex items-center justify-center hover:shadow-lg hover:scale-110 transition font-bold text-lg active:scale-95"
-              title="Like"
+              className="group w-16 h-16 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm flex items-center justify-center hover:bg-green-500/20 hover:border-green-500/50 transition-all duration-300"
             >
-              ♥
+              <Zap className="w-6 h-6 text-gray-400 group-hover:text-green-500 transition-colors"/>
             </button>
-          </div>
-
-          <div className="text-center mt-8 text-base font-light text-foreground animate-fade-in-up">
-            Viewing{" "}
-            <span className="font-semibold">
-              {profiles[currentIndex % profiles.length]?.name}
-            </span>
           </div>
         </div>
       </div>
