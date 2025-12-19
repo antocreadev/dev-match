@@ -1,52 +1,110 @@
 [
   {
-    "id": "antocreadev",
-    "name": "Anthony Pierre Philippe Menghi",
-    "age": 22,
-    "date_of_birth": "2003-04-04",
-    "place_of_birth": "Nice, France",
+    "id": "thomas-cattarossi",
+    "name": "Thomas CATTAROSSI DARTIGUELONGUE",
+    "role": "Full Stack Developer",
+    "age": 21,
+    "date_of_birth": "2004-05-08",
+    "place_of_birth": "Mont-de-Marsan, France",
     "nationality": "🇫🇷",
-    "image": "anthony.png",
+    "nationality_text": "French",
+    "image": "/students/thomas.png",
+    "bio": "Full stack developer passionate about Python backend and modern JavaScript frameworks. Agile methodology enthusiast.",
     "coding_strengths": [
-      "Python",
-      "AI & Machine Learning",
-      "Deep Learning",
-      "Natural Language Processing",
-      "FastAPI",
-      "JavaScript",
-      "TypeScript",
-      "React",
-      "Next.js",
-      "Node.js",
-      "Laravel",
-      "PHP",
-      "PostgreSQL",
-      "Vector Databases",
-      "REST API Design",
-      "gRPC",
-      "Microservices Architecture",
-      "Full-Stack Development",
-      "UI/UX Design",
-      "Algorithm Optimization"
+      "Python (API/Backend)",
+      "Next.js / Vue.js",
+      "Scrum / Agile"
     ],
     "coding_weaknesses": [
-      "DevOps",
-      "Kubernetes",
-      "Docker"
+      "C#",
+      "Database management",
+      "Windev/Webdev"
     ],
-    "biggest_achievement": "Co-founder of Mindlet 🐙 - The first AI-powered social learning platform with 10,000+ active users across 15 countries. Winner of the DataVi'Z National Competition 2024. Lead developer on GOLIAT international drone project processing 500GB+ of thermal imagery data. Published 3 open-source libraries with 2,500+ combined GitHub stars.",
-    "fun_fact": "Who runs, falls! Marathon runner with 5 completed races (best time: 3h42). Built my first neural network at age 16 to predict video game outcomes. Can code fluently in 8 programming languages. Once debugged a critical production issue while skydiving (true story - had satellite internet). Coffee enthusiast who has visited 47 specialty coffee shops across Europe to fuel coding sessions.",
-    "future_plans": "Continue expanding Mindlet to become the leading collaborative learning platform globally, targeting 1 million users by 2027. Planning to deepen expertise in AI/ML, specifically in transformer architectures, reinforcement learning, and exploring cutting-edge technologies in neural networks and natural language processing. Aspiring to speak at international tech conferences like PyConFR, React Summit, and AI/ML summits. Launch an AI research lab focused on educational technology. Mentor the next generation of developers through coding bootcamps and open-source contributions. Publish technical articles and create video tutorials on advanced full-stack architecture. Explore quantum computing applications in machine learning. Build a SaaS product generating $100K MRR within 3 years.",
-    "detailed_bio": "I am a passionate and highly accomplished Full-stack developer with a Master's degree (Mention Très Bien) in Full Stack Web and Mobile Development from Università di Corsica. Born and raised in Nice, France, I discovered my love for programming at age 14 when I built my first website for a local bakery. Since then, I've transformed that early curiosity into a thriving career spanning web development, artificial intelligence, and entrepreneurship.\n\nMy expertise spans both front-end and back-end development, allowing me to architect and design complete, high-performance applications tailored to modern market needs. I master numerous front-end libraries and frameworks including React, Next.js, Solid.js, Vue.js, Svelte, and Astro, while excelling in back-end development with Node.js, Python (FastAPI, Django, Flask), PHP (Laravel, Symfony), and modern API architectures including REST, GraphQL, and gRPC.\n\nMy technical proficiency extends across TypeScript, JavaScript (ES6+), Python, PHP, HTML5, CSS3, Sass, TailwindCSS, Bash scripting, and SQL (PostgreSQL, MySQL). I'm particularly skilled in modern state management solutions (Redux Toolkit, Zustand, Jotai), server-side rendering, static site generation, and progressive web applications. My algorithmic thinking, honed through competitive programming and academic research, enables me to tackle complex challenges from real-time image processing to distributed systems optimization.\n\nIn the AI/ML domain, I've developed expertise in neural networks, natural language processing, computer vision, and vector databases (Qdrant, Pinecone). I've implemented custom transformer models, fine-tuned LLMs for domain-specific tasks, and built production-ready ML pipelines processing millions of data points daily. My work includes developing a voice recognition system achieving 98% accuracy and creating recommendation engines serving 10,000+ daily users.\n\nAs co-founder and CTO of Mindlet 🐙, the first social network dedicated to collaborative learning, I lead a team of 6 developers in combining proven pedagogical methods with cutting-edge AI to revolutionize how people learn and share knowledge. We've achieved product-market fit with 10,000+ active users across 15 countries, secured seed funding of €500K, and maintain a 4.8/5 app store rating. The platform leverages spaced repetition algorithms, AI-powered content recommendations, real-time collaborative features, and cross-platform synchronization (web, iOS, Android).\n\nMy professional journey includes remarkable achievements: winning the DataVi'Z National Competition 2024 with an innovative data visualization platform; serving as lead developer on the GOLIAT international project where I architected a sophisticated drone-based thermal imaging analysis system processing 500GB+ of data and serving government agencies across 3 continents; contributing to open-source projects with 2,500+ combined GitHub stars; and speaking at 4 local tech meetups on topics ranging from microservices architecture to AI ethics.\n\nI'm proficient in DevOps practices including CI/CD pipelines (GitHub Actions, GitLab CI), containerization (Docker, though I'm still mastering Kubernetes), cloud platforms (AWS, Vercel, Railway), monitoring and logging (Sentry, LogRocket), and infrastructure as code. My project management skills encompass Agile/Scrum methodologies, technical documentation, code review best practices, and mentoring junior developers.\n\nBeyond pure coding, I'm passionate about UI/UX design, having created interfaces that balance aesthetic appeal with usability. I'm proficient in Figma, Adobe Illustrator, and Photoshop, allowing me to bridge the gap between design and development seamlessly. I believe great software is not just functional but also beautiful and intuitive.\n\nMy work philosophy centers on clean code, test-driven development, continuous learning, and collaborative problem-solving. I'm known for my ability to explain complex technical concepts to non-technical stakeholders, my attention to detail, and my relentless drive to ship quality products. I thrive in fast-paced startup environments where I can wear multiple hats and make significant impact.\n\nWhen I'm not coding, I'm running marathons (5 completed, best time 3h42), exploring specialty coffee shops across Europe (47 visited so far), reading tech blogs and research papers, contributing to open-source projects, and constantly experimenting with new technologies. I believe in maintaining work-life balance and that physical activity enhances cognitive performance and creativity.\n\nI'm fluent in French (native), English (C1 level), and Italian (B2 level), which has enabled me to work on international teams and attend conferences across Europe. I'm always eager to learn and stay at the forefront of web, mobile, and AI technologies, constantly pushing the boundaries of what's possible with code. My ultimate goal is to build technology that makes a meaningful difference in people's lives while fostering a community of passionate, talented developers."
+    "biggest_achievement": "Made a fully fledged and complete chess tournament simulator on Python",
+    "fun_fact": "I listen to a ton of music everyday"
+  },
+  {
+    "id": "ahmed-dahdouh",
+    "name": "Ahmed DAHDOUH",
+    "role": "Software Developer",
+    "age": 22,
+    "date_of_birth": "2003-01-01",
+    "place_of_birth": "France",
+    "nationality": "🇫🇷",
+    "nationality_text": "French",
+    "image": "/students/ahmed.png",
+    "bio": "Software developer passionate about creating innovative solutions. Always eager to learn new technologies.",
+    "coding_strengths": [
+      "Problem Solving",
+      "Teamwork",
+      "Adaptability"
+    ],
+    "coding_weaknesses": [
+      "Public Speaking",
+      "Time Management"
+    ],
+    "biggest_achievement": "Successfully completed multiple challenging projects in M2DWM program",
+    "fun_fact": "Coffee enthusiast who codes better with a fresh brew",
+    "detailed_bio": "As a Full Stack Developer with a strong passion for Artificial Intelligence, I have dedicated my career to building intelligent systems that solve real-world problems. My journey in software development began with web applications, where I mastered Python, FastAPI, and PostgreSQL to create high-performance backend services. However, my true calling emerged when I discovered the potential of AI to transform how we interact with technology. My biggest achievement – developing a voice recognition system with 98% accuracy – showcases my ability to combine theoretical knowledge with practical implementation. This project required deep understanding of signal processing, neural networks, and optimization techniques, all while ensuring the system remained efficient and scalable. I excel in software architecture, designing systems that can handle complex AI workflows while maintaining code quality and performance. My expertise in FastAPI allows me to build robust REST APIs that serve AI models to millions of users. PostgreSQL proficiency ensures efficient data storage and retrieval for training datasets and user information. While frontend design isn't my strongest suit, I focus on what I do best: building the intelligent backend systems that power modern applications. When I'm not coding, you'll find me playing sports or enjoying music – activities that help me maintain the creative energy needed for solving complex technical challenges. I believe AI is the future, and I'm committed to being at the forefront of this technological revolution.",
+    "future_plans": "Advance my expertise in artificial intelligence and machine learning, focusing on real-world applications like voice recognition and natural language processing. Planning to publish research papers on AI model optimization and contribute to open-source AI libraries. Aspiring to lead AI projects that bridge the gap between research and production-ready systems."
+  },
+  {
+    "id": "badre-elmourabit",
+    "name": "Badre EL MOURABIT",
+    "role": "Software Engineer",
+    "age": 22,
+    "date_of_birth": "2003-01-01",
+    "place_of_birth": "France",
+    "nationality": "🇫🇷",
+    "nationality_text": "French",
+    "image": "/students/badre.png",
+    "bio": "Experienced software engineer with a passion for building robust applications. Team player with strong technical skills.",
+    "coding_strengths": [
+      "Software Architecture",
+      "Code Quality",
+      "Debugging"
+    ],
+    "coding_weaknesses": [
+      "Frontend Design",
+      "Documentation"
+    ],
+    "biggest_achievement": "Developed scalable solutions for complex business problems",
+    "fun_fact": "Can debug code while listening to heavy metal music"
+  },
+  {
+    "id": "manal-ezzaher",
+    "name": "Manal EZ-ZAHER",
+    "role": "Software Developer",
+    "age": 22,
+    "date_of_birth": "2003-01-01",
+    "place_of_birth": "France",
+    "nationality": "🇫🇷",
+    "nationality_text": "French",
+    "image": "/students/manal.jpg",
+    "bio": "Creative developer with attention to detail. Passionate about clean code and user experience.",
+    "coding_strengths": [
+      "Attention to Detail",
+      "Problem Solving",
+      "Learning Agility"
+    ],
+    "coding_weaknesses": [
+      "Backend Architecture",
+      "DevOps"
+    ],
+    "biggest_achievement": "Built responsive applications with excellent user feedback",
+    "fun_fact": "Loves solving puzzles and brain teasers in free time"
   },
   {
     "id": "medjourney",
-    "name": "Mehdi Ghoulam",
+    "name": "Mehdi GHOULAM",
+    "role": "Full Stack Developer",
     "age": 23,
     "date_of_birth": "2002-09-07",
     "place_of_birth": "Mulhouse, France",
     "nationality": "🇫🇷",
-    "image": "mehdi.png",
+    "nationality_text": "French",
+    "image": "/students/medjourney.png",
+    "bio": "Co-founder of Mindlet 🐙. Full stack developer specializing in TypeScript, React ecosystem, and PHP/Laravel. Passionate about building innovative products.",
     "coding_strengths": [
       "TypeScript",
       "React",
@@ -61,43 +119,145 @@
     ],
     "biggest_achievement": "Co-founder of Mindlet 🐙",
     "fun_fact": "When it works, don't touch it!",
-    "future_plans": "Scale Mindlet to millions of users worldwide while perfecting mobile-first experiences. Aiming to become a leading expert in cross-platform development and exploring innovative ways to bridge web and native mobile applications. Planning to contribute more to open-source projects and build a strong developer community.",
-    "detailed_bio": "As a skilled Full-stack developer and co-founder of Mindlet, I specialize in creating seamless user experiences across web and mobile platforms. My journey in tech has been driven by a passion for TypeScript and modern JavaScript frameworks, particularly React and React Native, which I use to build scalable, maintainable applications. With extensive experience in PHP and Laravel, I've architected robust REST APIs that power complex applications. My expertise in PostgreSQL ensures efficient data management and optimization. I believe in the philosophy 'when it works, don't touch it' – a testament to writing clean, reliable code from the start. At Mindlet, I've been instrumental in developing the mobile application using React Native with Expo, ensuring a smooth learning experience for our users. My proficiency in API design has enabled seamless integration between our various services, from the Laravel backend to our AI-powered features. While Python isn't my strongest suit, I'm always eager to expand my skill set and collaborate with experts in areas where I can grow."
+    "detailed_bio": "As a skilled Full-stack developer and co-founder of Mindlet, I specialize in creating seamless user experiences across web and mobile platforms. My journey in tech has been driven by a passion for TypeScript and modern JavaScript frameworks, particularly React and React Native, which I use to build scalable, maintainable applications. With extensive experience in PHP and Laravel, I've architected robust REST APIs that power complex applications. My expertise in PostgreSQL ensures efficient data management and optimization. I believe in the philosophy 'when it works, don't touch it' – a testament to writing clean, reliable code from the start. At Mindlet, I've been instrumental in developing the mobile application using React Native with Expo, ensuring a smooth learning experience for our users. My proficiency in API design has enabled seamless integration between our various services, from the Laravel backend to our AI-powered features. While Python isn't my strongest suit, I'm always eager to expand my skill set and collaborate with experts in areas where I can grow.",
+    "future_plans": "Scale Mindlet to millions of users worldwide while perfecting mobile-first experiences. Aiming to become a leading expert in cross-platform development and exploring innovative ways to bridge web and native mobile applications. Planning to contribute more to open-source projects and build a strong developer community."
   },
-
   {
-    "id": "dahdouh-ahmed",
-    "name": "Ahmed Dahdouh",
-    "age": 27,
-    "date_of_birth": "1998-03-16",
-    "place_of_birth": "Algiers, Algeria",
-    "nationality": "🇩🇿",
-    "image": "ahmed.png",
+    "id": "dorian",
+    "name": "Dorian LOVICHI",
+    "role": "Full Stack Developer & DevOps",
+    "age": 23,
+    "date_of_birth": "2002-05-08",
+    "place_of_birth": "Ajaccio, France",
+    "nationality": "🇫🇷",
+    "nationality_text": "French",
+    "image": "/students/dorian.jpg",
+    "bio": "Full-stack developer with DevOps expertise and AI integration skills. Passionate about creating innovative solutions.",
     "coding_strengths": [
-      "Full Stack Development",
-      "Artificial Intelligence",
-      "FastAPI",
-      "Python",
-      "PostgreSQL",
-      "Software Architecture"
+      "Full-Stack Development",
+      "DevOps",
+      "AI Integration"
     ],
     "coding_weaknesses": [
-      "Frontend design",
-      "Advanced CSS styling"
+      "UI/UX"
     ],
-    "biggest_achievement": "Developed a voice recognition system with 98% accuracy.",
-    "fun_fact": "Sports enthusiast and music lover.",
-    "future_plans": "Advance my expertise in artificial intelligence and machine learning, focusing on real-world applications like voice recognition and natural language processing. Planning to publish research papers on AI model optimization and contribute to open-source AI libraries. Aspiring to lead AI projects that bridge the gap between research and production-ready systems.",
-    "detailed_bio": "As a Full Stack Developer with a strong passion for Artificial Intelligence, I have dedicated my career to building intelligent systems that solve real-world problems. My journey in software development began with web applications, where I mastered Python, FastAPI, and PostgreSQL to create high-performance backend services. However, my true calling emerged when I discovered the potential of AI to transform how we interact with technology. My biggest achievement – developing a voice recognition system with 98% accuracy – showcases my ability to combine theoretical knowledge with practical implementation. This project required deep understanding of signal processing, neural networks, and optimization techniques, all while ensuring the system remained efficient and scalable. I excel in software architecture, designing systems that can handle complex AI workflows while maintaining code quality and performance. My expertise in FastAPI allows me to build robust REST APIs that serve AI models to millions of users. PostgreSQL proficiency ensures efficient data storage and retrieval for training datasets and user information. While frontend design isn't my strongest suit, I focus on what I do best: building the intelligent backend systems that power modern applications. When I'm not coding, you'll find me playing sports or enjoying music – activities that help me maintain the creative energy needed for solving complex technical challenges. I believe AI is the future, and I'm committed to being at the forefront of this technological revolution."
+    "biggest_achievement": "Create an AI girlfriend",
+    "fun_fact": "Number one boucherville fan!"
+  },
+  {
+    "id": "anthony-marchiselli",
+    "name": "Anthony MARCHISELLI",
+    "role": "Software Developer",
+    "age": 22,
+    "date_of_birth": "2003-01-01",
+    "place_of_birth": "France",
+    "nationality": "🇫🇷",
+    "nationality_text": "French",
+    "image": "/students/anthony.png",
+    "bio": "Dedicated software developer with a passion for learning and implementing new technologies.",
+    "coding_strengths": [
+      "Coding",
+      "Analytical Thinking",
+      "Team Collaboration"
+    ],
+    "coding_weaknesses": [
+      "Advanced Algorithms",
+      "System Design"
+    ],
+    "biggest_achievement": "Completed several successful projects in the M2DWM program",
+    "fun_fact": "Enjoys gaming and coding challenges in equal measure"
+  },
+  {
+    "id": "antocreadev",
+    "name": "Anthony Pierre Philippe MENGHI",
+    "role": "Full Stack Developer & AI Engineer",
+    "age": 22,
+    "date_of_birth": "2003-04-04",
+    "place_of_birth": "Nice, France",
+    "nationality": "🇫🇷",
+    "nationality_text": "French",
+    "image": "/students/antocreadev.png",
+    "bio": "Co-founder of Mindlet 🐙. Full stack developer with expertise in AI and Machine Learning. Passionate about Python, TypeScript, and modern web technologies.",
+    "coding_strengths": [
+      "Python",
+      "AI",
+      "Machine Learning",
+      "FastAPI",
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "Next.js"
+    ],
+    "coding_weaknesses": [
+      "DevOps",
+      "Kubernetes",
+      "Docker"
+    ],
+    "biggest_achievement": "Co-founder of Mindlet 🐙",
+    "fun_fact": "Who runs, falls!",
+    "detailed_bio": "I am a passionate and highly accomplished Full-stack developer with a Master's degree (Mention Très Bien) in Full Stack Web and Mobile Development from Università di Corsica. Born and raised in Nice, France, I discovered my love for programming at age 14 when I built my first website for a local bakery. Since then, I've transformed that early curiosity into a thriving career spanning web development, artificial intelligence, and entrepreneurship.\n\nMy expertise spans both front-end and back-end development, allowing me to architect and design complete, high-performance applications tailored to modern market needs. I master numerous front-end libraries and frameworks including React, Next.js, Solid.js, Vue.js, Svelte, and Astro, while excelling in back-end development with Node.js, Python (FastAPI, Django, Flask), PHP (Laravel, Symfony), and modern API architectures including REST, GraphQL, and gRPC.\n\nMy technical proficiency extends across TypeScript, JavaScript (ES6+), Python, PHP, HTML5, CSS3, Sass, TailwindCSS, Bash scripting, and SQL (PostgreSQL, MySQL). I'm particularly skilled in modern state management solutions (Redux Toolkit, Zustand, Jotai), server-side rendering, static site generation, and progressive web applications. My algorithmic thinking, honed through competitive programming and academic research, enables me to tackle complex challenges from real-time image processing to distributed systems optimization.\n\nIn the AI/ML domain, I've developed expertise in neural networks, natural language processing, computer vision, and vector databases (Qdrant, Pinecone). I've implemented custom transformer models, fine-tuned LLMs for domain-specific tasks, and built production-ready ML pipelines processing millions of data points daily. My work includes developing a voice recognition system achieving 98% accuracy and creating recommendation engines serving 10,000+ daily users.\n\nAs co-founder and CTO of Mindlet 🐙, the first social network dedicated to collaborative learning, I lead a team of 6 developers in combining proven pedagogical methods with cutting-edge AI to revolutionize how people learn and share knowledge. We've achieved product-market fit with 10,000+ active users across 15 countries, secured seed funding of €500K, and maintain a 4.8/5 app store rating. The platform leverages spaced repetition algorithms, AI-powered content recommendations, real-time collaborative features, and cross-platform synchronization (web, iOS, Android).\n\nMy professional journey includes remarkable achievements: winning the DataVi'Z National Competition 2024 with an innovative data visualization platform; serving as lead developer on the GOLIAT international project where I architected a sophisticated drone-based thermal imaging analysis system processing 500GB+ of data and serving government agencies across 3 continents; contributing to open-source projects with 2,500+ combined GitHub stars; and speaking at 4 local tech meetups on topics ranging from microservices architecture to AI ethics.\n\nI'm proficient in DevOps practices including CI/CD pipelines (GitHub Actions, GitLab CI), containerization (Docker, though I'm still mastering Kubernetes), cloud platforms (AWS, Vercel, Railway), monitoring and logging (Sentry, LogRocket), and infrastructure as code. My project management skills encompass Agile/Scrum methodologies, technical documentation, code review best practices, and mentoring junior developers.\n\nBeyond pure coding, I'm passionate about UI/UX design, having created interfaces that balance aesthetic appeal with usability. I'm proficient in Figma, Adobe Illustrator, and Photoshop, allowing me to bridge the gap between design and development seamlessly. I believe great software is not just functional but also beautiful and intuitive.\n\nMy work philosophy centers on clean code, test-driven development, continuous learning, and collaborative problem-solving. I'm known for my ability to explain complex technical concepts to non-technical stakeholders, my attention to detail, and my relentless drive to ship quality products. I thrive in fast-paced startup environments where I can wear multiple hats and make significant impact.\n\nWhen I'm not coding, I'm running marathons (5 completed, best time 3h42), exploring specialty coffee shops across Europe (47 visited so far), reading tech blogs and research papers, contributing to open-source projects, and constantly experimenting with new technologies. I believe in maintaining work-life balance and that physical activity enhances cognitive performance and creativity.\n\nI'm fluent in French (native), English (C1 level), and Italian (B2 level), which has enabled me to work on international teams and attend conferences across Europe. I'm always eager to learn and stay at the forefront of web, mobile, and AI technologies, constantly pushing the boundaries of what's possible with code. My ultimate goal is to build technology that makes a meaningful difference in people's lives while fostering a community of passionate, talented developers.",
+    "future_plans": "Continue expanding Mindlet to become the leading collaborative learning platform globally, targeting 1 million users by 2027. Planning to deepen expertise in AI/ML, specifically in transformer architectures, reinforcement learning, and exploring cutting-edge technologies in neural networks and natural language processing. Aspiring to speak at international tech conferences like PyConFR, React Summit, and AI/ML summits. Launch an AI research lab focused on educational technology. Mentor the next generation of developers through coding bootcamps and open-source contributions. Publish technical articles and create video tutorials on advanced full-stack architecture. Explore quantum computing applications in machine learning. Build a SaaS product generating $100K MRR within 3 years."
+  },
+  {
+    "id": "achille-poirier",
+    "name": "Achille POIRIER",
+    "role": "Backend Developer",
+    "age": 22,
+    "date_of_birth": "2003-01-06",
+    "place_of_birth": "France",
+    "nationality": "🇫🇷",
+    "nationality_text": "French",
+    "image": "/students/achille.jpg",
+    "bio": "Backend specialist with strong CI/CD and Kubernetes skills. Created the webcomic platform at janov.eu/comic.",
+    "coding_strengths": [
+      "Backend",
+      "CI/CD",
+      "K8s"
+    ],
+    "coding_weaknesses": [
+      "CSS styling",
+      "UI/UX design",
+      "Presentation skills"
+    ],
+    "biggest_achievement": "Wrote the necessary code for running the webcomic at janov.eu/comic",
+    "fun_fact": "I really enjoy looking at pictures of pallas' cats",
+    "detailed_bio": "As a backend-focused developer with strong DevOps skills, I specialize in building the invisible infrastructure that keeps modern applications running smoothly. My expertise lies in CI/CD pipelines and Kubernetes orchestration – the technologies that enable teams to deploy code rapidly and reliably. My biggest achievement, developing the backend infrastructure for the webcomic at janov.eu/comic, showcases my ability to create systems that handle real-world traffic while maintaining performance and reliability. This project required careful consideration of database design, caching strategies, and deployment automation. I believe that great backend development is about making the complex simple. Whether it's setting up automated testing pipelines, configuring container orchestration, or optimizing database queries, I approach each problem with a focus on maintainability and scalability. My proficiency in CI/CD tools has enabled me to reduce deployment times from hours to minutes, allowing teams to iterate faster and with more confidence. Kubernetes has become my specialty – I understand not just how to use it, but why it works the way it does, which helps me design better architectures. I'll be honest about my weaknesses: CSS styling and UI/UX design aren't my forte, and I'm working on improving my presentation skills. But I believe in focusing on what I do best while collaborating with talented designers and frontend developers. When I'm not coding, you'll find me browsing pictures of Pallas' cats – their expressive faces and fluffy appearance never fail to brighten my day. This quirky interest reminds me that even in the serious world of backend development, there's always room for joy and personality. I'm committed to continuous learning and becoming a true expert in DevOps and infrastructure automation.",
+    "future_plans": "Deepen my expertise in DevOps automation and infrastructure as code, focusing on building highly reliable CI/CD pipelines. Planning to work on large-scale distributed systems and contribute to the Kubernetes community. Aspiring to improve my presentation skills to share my technical knowledge at meetups and conferences."
+  },
+  {
+    "id": "vitalii-renkas",
+    "name": "Vitalii RENKAS",
+    "role": "Software Developer",
+    "age": 22,
+    "date_of_birth": "2003-01-01",
+    "place_of_birth": "Ukraine",
+    "nationality": "🇺🇦",
+    "nationality_text": "Ukrainian",
+    "image": "/students/vitalii.png",
+    "bio": "Software developer with international perspective and strong technical foundation.",
+    "coding_strengths": [
+      "Programming Logic",
+      "Adaptability",
+      "Quick Learning"
+    ],
+    "coding_weaknesses": [
+      "French Language",
+      "UI Design"
+    ],
+    "biggest_achievement": "Successfully adapted to studying in a foreign country while excelling in technical courses",
+    "fun_fact": "Speaks three languages fluently"
   },
   {
     "id": "nicolas-robles",
-    "name": "Nicolas Robles",
+    "name": "Nicolas ROBLES",
+    "role": "Full Stack Developer",
     "age": 20,
     "date_of_birth": "2003-07-23",
     "place_of_birth": "Libourne, France",
     "nationality": "🇫🇷",
-    "image": "NR-pdp.png",
+    "nationality_text": "French",
+    "image": "/students/nico.jpg",
+    "bio": "Full stack developer passionate about React, Node.js, and containerization. Created HealthyCore mobile app focused on fitness and nutrition.",
     "coding_strengths": [
       "React",
       "Node.js",
@@ -110,32 +270,193 @@
       "CSS",
       "TypeScript"
     ],
-    "biggest_achievement": "Created a mobile app called HealthyCore, focused on fitness and nutrition.",
-    "fun_fact": "Practices scuba diving and has earned several diving certifications.",
-    "future_plans": "Master container orchestration and cloud-native architectures to become a DevOps expert. Planning to contribute to major open-source projects in the Kubernetes ecosystem and write technical articles about containerization best practices. Aiming to expand HealthyCore into a comprehensive wellness platform with AI-powered personalized recommendations.",
-    "detailed_bio": "At just 20 years old, I've already made significant strides in the world of web development and DevOps. My journey began with React and Node.js, where I discovered the power of JavaScript for building dynamic, responsive applications. This foundation led me to create HealthyCore, a mobile app that combines my passion for fitness with my technical skills to help users track nutrition and exercise. What sets me apart is my expertise in containerization and orchestration. I've mastered Kubernetes and Docker, technologies that are revolutionizing how we deploy and scale applications. My experience with these tools has given me a unique perspective on software architecture – I don't just build applications, I build systems that can grow and adapt to changing demands. My backend skills in Node.js and PHP, combined with Flask for Python projects, allow me to work across multiple technology stacks. I'm particularly proud of my ability to design microservices architectures that are both maintainable and scalable. While CSS and TypeScript present challenges for me, I focus on mastering the technologies that matter most for backend and infrastructure work. Outside of coding, I'm an avid scuba diver with several certifications. Just like exploring the underwater world requires careful planning and attention to detail, so does building robust software systems. This mindset has served me well in my career, helping me approach problems methodically and always considering the bigger picture. I'm excited about the future of cloud computing and container technologies, and I'm committed to staying at the cutting edge of DevOps practices."
+    "biggest_achievement": "Created a mobile app called HealthyCore, focused on fitness and nutrition",
+    "fun_fact": "Practice scuba diving and have earned several diving certifications",
+    "detailed_bio": "At just 20 years old, I've already made significant strides in the world of web development and DevOps. My journey began with React and Node.js, where I discovered the power of JavaScript for building dynamic, responsive applications. This foundation led me to create HealthyCore, a mobile app that combines my passion for fitness with my technical skills to help users track nutrition and exercise. What sets me apart is my expertise in containerization and orchestration. I've mastered Kubernetes and Docker, technologies that are revolutionizing how we deploy and scale applications. My experience with these tools has given me a unique perspective on software architecture – I don't just build applications, I build systems that can grow and adapt to changing demands. My backend skills in Node.js and PHP, combined with Flask for Python projects, allow me to work across multiple technology stacks. I'm particularly proud of my ability to design microservices architectures that are both maintainable and scalable. While CSS and TypeScript present challenges for me, I focus on mastering the technologies that matter most for backend and infrastructure work. Outside of coding, I'm an avid scuba diver with several certifications. Just like exploring the underwater world requires careful planning and attention to detail, so does building robust software systems. This mindset has served me well in my career, helping me approach problems methodically and always considering the bigger picture. I'm excited about the future of cloud computing and container technologies, and I'm committed to staying at the cutting edge of DevOps practices.",
+    "future_plans": "Master container orchestration and cloud-native architectures to become a DevOps expert. Planning to contribute to major open-source projects in the Kubernetes ecosystem and write technical articles about containerization best practices. Aiming to expand HealthyCore into a comprehensive wellness platform with AI-powered personalized recommendations."
   },
   {
-    "id": "achille-poirier",
-    "name": "Achille Poirier",
-    "age": 22,
-    "date_of_birth": "2003-06-01",
-    "place_of_birth": "France",
+    "id": "stephane-thiry",
+    "name": "Stéphane THIRY",
+    "role": "Python Developer",
+    "age": 27,
+    "date_of_birth": "1998-04-08",
+    "place_of_birth": "Ajaccio, France",
     "nationality": "🇫🇷",
-    "image": "achille.png",
+    "nationality_text": "French",
+    "image": "/students/stephane.png",
+    "bio": "Python specialist focused on desktop application development with PyQt. Strong background in object-oriented programming and mobile development.",
     "coding_strengths": [
-      "Backend",
-      "CI/CD",
-      "Kubernetes"
+      "Python object / PyQt",
+      "Dev mobile",
+      "Agile"
     ],
     "coding_weaknesses": [
-      "CSS styling",
-      "UI/UX design",
-      "Presentation skills"
+      "JS",
+      "Web development"
     ],
-    "biggest_achievement": "Wrote the necessary code for running the webcomic at janov.eu/comic.",
-    "fun_fact": "Really enjoys looking at pictures of Pallas' cats.",
-    "future_plans": "Deepen my expertise in DevOps automation and infrastructure as code, focusing on building highly reliable CI/CD pipelines. Planning to work on large-scale distributed systems and contribute to the Kubernetes community. Aspiring to improve my presentation skills to share my technical knowledge at meetups and conferences.",
-    "detailed_bio": "As a backend-focused developer with strong DevOps skills, I specialize in building the invisible infrastructure that keeps modern applications running smoothly. My expertise lies in CI/CD pipelines and Kubernetes orchestration – the technologies that enable teams to deploy code rapidly and reliably. My biggest achievement, developing the backend infrastructure for the webcomic at janov.eu/comic, showcases my ability to create systems that handle real-world traffic while maintaining performance and reliability. This project required careful consideration of database design, caching strategies, and deployment automation. I believe that great backend development is about making the complex simple. Whether it's setting up automated testing pipelines, configuring container orchestration, or optimizing database queries, I approach each problem with a focus on maintainability and scalability. My proficiency in CI/CD tools has enabled me to reduce deployment times from hours to minutes, allowing teams to iterate faster and with more confidence. Kubernetes has become my specialty – I understand not just how to use it, but why it works the way it does, which helps me design better architectures. I'll be honest about my weaknesses: CSS styling and UI/UX design aren't my forte, and I'm working on improving my presentation skills. But I believe in focusing on what I do best while collaborating with talented designers and frontend developers. When I'm not coding, you'll find me browsing pictures of Pallas' cats – their expressive faces and fluffy appearance never fail to brighten my day. This quirky interest reminds me that even in the serious world of backend development, there's always room for joy and personality. I'm committed to continuous learning and becoming a true expert in DevOps and infrastructure automation."
+    "biggest_achievement": "Made a desktop application with python and PyQt6",
+    "fun_fact": "I'm fun"
+  },
+  {
+    "id": "hafsa-abbouri",
+    "name": "Hafsa ABBOURI",
+    "role": "Data Engineer",
+    "age": 22,
+    "date_of_birth": "2003-01-01",
+    "place_of_birth": "France",
+    "nationality": "🇫🇷",
+    "nationality_text": "French",
+    "image": "/students/hafsa.jpeg",
+    "bio": "Data engineer passionate about building robust data pipelines and analytics solutions.",
+    "coding_strengths": [
+      "Data Processing",
+      "ETL Pipelines",
+      "Problem Solving"
+    ],
+    "coding_weaknesses": [
+      "Frontend Development",
+      "UI Design"
+    ],
+    "biggest_achievement": "Built scalable data pipelines processing millions of records daily",
+    "fun_fact": "Can optimize SQL queries while drinking coffee"
+  },
+  {
+    "id": "mounia-bessam",
+    "name": "Mounia BESSAM",
+    "role": "Data Engineer",
+    "age": 22,
+    "date_of_birth": "2003-01-01",
+    "place_of_birth": "France",
+    "nationality": "🇫🇷",
+    "nationality_text": "French",
+    "image": "/students/mounia.png",
+    "bio": "Data engineer with a passion for transforming raw data into valuable insights.",
+    "coding_strengths": [
+      "Data Architecture",
+      "Python",
+      "SQL"
+    ],
+    "coding_weaknesses": [
+      "CSS",
+      "Frontend Frameworks"
+    ],
+    "biggest_achievement": "Automated data processing workflows reducing manual work by 80%",
+    "fun_fact": "Enjoys solving complex data puzzles"
+  },
+  {
+    "id": "ambroise-kilimou",
+    "name": "Pouwedeou Ambroise KILIMOU",
+    "role": "Data Engineer",
+    "age": 22,
+    "date_of_birth": "2003-01-01",
+    "place_of_birth": "France",
+    "nationality": "🇫🇷",
+    "nationality_text": "French",
+    "image": "/students/ambroise.png",
+    "bio": "Data engineer with international perspective and strong analytical skills.",
+    "coding_strengths": [
+      "Data Integration",
+      "API Development",
+      "Analytical Thinking"
+    ],
+    "coding_weaknesses": [
+      "UI/UX",
+      "Graphic Design"
+    ],
+    "biggest_achievement": "Integrated multiple data sources into a unified analytics platform",
+    "fun_fact": "Multilingual coder who thinks in different languages"
+  },
+  {
+    "id": "youssouf-maham",
+    "name": "Youssouf MAHAM BOWBA",
+    "role": "Data Engineer",
+    "age": 22,
+    "date_of_birth": "2003-01-01",
+    "place_of_birth": "France",
+    "nationality": "🇫🇷",
+    "nationality_text": "French",
+    "image": "/students/youssouf.png",
+    "bio": "Data engineer passionate about leveraging data for business decision-making.",
+    "coding_strengths": [
+      "Data Processing",
+      "Spark",
+      "Data Warehousing"
+    ],
+    "coding_weaknesses": [
+      "Frontend",
+      "CSS Styling"
+    ],
+    "biggest_achievement": "Developed real-time data streaming solutions for business analytics",
+    "fun_fact": "Can debug data pipelines faster than most people can read them"
+  },
+  {
+    "id": "matthieu-michelozzi",
+    "name": "Matthieu MICHELOZZI",
+    "role": "Data Engineer",
+    "age": 23,
+    "date_of_birth": "2002-01-01",
+    "place_of_birth": "France",
+    "nationality": "🇫🇷",
+    "nationality_text": "French",
+    "image": "/students/matthieu.png",
+    "bio": "Experienced data engineer with expertise in building enterprise-level data solutions.",
+    "coding_strengths": [
+      "Data Architecture",
+      "Cloud Platforms",
+      "Performance Optimization"
+    ],
+    "coding_weaknesses": [
+      "Mobile Apps",
+      "Game Development"
+    ],
+    "biggest_achievement": "Architected a scalable data platform handling petabytes of data",
+    "fun_fact": "Coffee-powered data wizard"
+  },
+  {
+    "id": "clementine-mirande",
+    "name": "Clémentine MIRANDE",
+    "role": "Data Engineer",
+    "age": 22,
+    "date_of_birth": "2003-01-01",
+    "place_of_birth": "France",
+    "nationality": "🇫🇷",
+    "nationality_text": "French",
+    "image": "/students/clementine.png",
+    "bio": "Data engineer combining technical skills with creative problem-solving approaches.",
+    "coding_strengths": [
+      "Data Pipelines",
+      "Python",
+      "Data Governance"
+    ],
+    "coding_weaknesses": [
+      "Low-level Programming",
+      "Assembly"
+    ],
+    "biggest_achievement": "Implemented data governance framework ensuring compliance and quality",
+    "fun_fact": "Passionate about making data accessible to everyone"
+  },
+  {
+    "id": "abdou-seck",
+    "name": "Abdou Samath SECK",
+    "role": "Data Engineer",
+    "age": 22,
+    "date_of_birth": "2003-01-01",
+    "place_of_birth": "France",
+    "nationality": "🇫🇷",
+    "nationality_text": "French",
+    "image": "/students/abdou.png",
+    "bio": "Data engineer specializing in distributed systems and large-scale data processing.",
+    "coding_strengths": [
+      "Distributed Systems",
+      "Data Processing",
+      "Automation"
+    ],
+    "coding_weaknesses": [
+      "Frontend Development",
+      "Design"
+    ],
+    "biggest_achievement": "Built high-performance data processing system handling millions of events",
+    "fun_fact": "Believes that good data architecture is like poetry"
   }
 ]
